@@ -25,3 +25,8 @@ body{
     border-bottom: 5px solid #001D6E;
     box-shadow: 0 0 10px #000;
 }
+.text{
+    font-size: 32px;
+    text-align: center;
+    padding-bottom: 30px;
+}
