@@ -12,16 +12,15 @@
         calendar.render();
       });
 
-      async function getDate () {
-        try {
-          const resultat = await axios.get('');
-          return resultat;
-        }
-        catch (error) {
-          console.log(error);
-        }
-      }
-
-      const date = await getDate();
-
       
+      // async function getDate () {
+      //   try {
+      //     const resultat = await axios.get('https://api.punkapi.com/v2/beers/');
+      //     return resultat;
+      //   }
+      //   catch (error) {
+      //     console.log(error);
+      //   }
+      // }
+
+      // const date = await getDate();
