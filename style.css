@@ -19,5 +19,6 @@ body{
     left: 0;
     right: 0;
     bottom: 0;
-    padding: 30px;
+    padding: 50px;
+    border-radius: 20px;
 }
