@@ -17,8 +17,8 @@ configurez la boîte e-mail de votre smartphone)
 - Une page laissée “blanche” dans l’équipe JS Calendrier va insérer sa réalisation
 
 
-fonction utile:
-<!-- function curlPost($url, $data = NULL) {
+<!-- fonction utile:
+function curlPost($url, $data = NULL) {
 $ch = curl_init($url);
 curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36');
@@ -40,4 +40,7 @@ curl_close($ch);
 return $response;
 
 
-} -->
+}
+
+Exemple d’utilisation:
+$response = curlPost("http://www.test.ch", ["myField1"=>"myValue1"]); -->
