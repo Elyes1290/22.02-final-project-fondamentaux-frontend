@@ -11,3 +11,17 @@
         });
         calendar.render();
       });
+
+      async function getDate () {
+        try {
+          const resultat = await axios.get('');
+          return resultat;
+        }
+        catch (error) {
+          console.log(error);
+        }
+      }
+
+      const date = await getDate();
+
+      
