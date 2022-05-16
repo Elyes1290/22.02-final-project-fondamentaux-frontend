@@ -7,5 +7,16 @@ body{
    font-family: sans-serif;
    font-size: 16px;
    color: #ffff;
-   background-color: #92B4EC;
- }
+   background-color: #ffffff;
+}
+.container{
+    width: 350px;
+    height: 450px;
+    background-color: #5EE6EB;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 30px;
+}
