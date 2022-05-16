@@ -1,5 +1,9 @@
 # Page de Contact
 
+<h1>Les étapes à suivre</h1>
+1. Mettre en place un formulaire de contact et traiter les données POST
+2. Utilisation du service informaniak pour transmettre l'e-mail de l'utilisateur
+
 <h1>responsabilité:</h1>
 - Une page d’enregistrement avec un formulaire
 
@@ -44,3 +48,4 @@ return $response;
 
 Exemple d’utilisation:
 $response = curlPost("http://www.test.ch", ["myField1"=>"myValue1"]); -->
+
