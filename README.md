@@ -2,7 +2,7 @@
 
 ## Les étapes à suivre
 1. Mettre en place un formulaire de contact et traiter les données POST
-2. Utilisation du service <a href="https://fr.mailjet.com/"> pour transmettre l'e-mail de l'utilisateur
+2. Utilisation du service [MailJet](https://www.example.com) pour transmettre l'e-mail de l'utilisateur
 
 ## responsabilité
 - Une page d’enregistrement avec un formulaire
