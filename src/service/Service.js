@@ -5,6 +5,10 @@ let loading = true;
 
 class Service {
 
+    /**
+     * 
+     * @returns la response de axios (listes des users), puis renvoie une erreur ou/et le loading si il y a.
+     */
     async serviceGetUsers() {
         try {
             console.log("[Service.js][serviceGetUsers] request get sended to axios");
@@ -17,6 +21,10 @@ class Service {
         }
     }
 
+    /**
+     * 
+     * @returns la response de axios (listes des taches), puis renvoie une erreur ou/et le loading si il y a.
+     */
     async serviceGetTasks() {
         try {
             console.log("[Service.js][serviceGetTasks] request get sended to axios");
@@ -29,6 +37,11 @@ class Service {
         }
     }
 
+    /**
+     * 
+     * @param {*} id id de la tache a eliminer
+     * @returns la response de axios (une tache), puis renvoie une erreur ou/et le loading si il y a.
+     */
     async serviceGetTask(id) {
         try {
             console.log("[Service.js][serviceGetTask] request get sended to axios");
@@ -41,6 +54,11 @@ class Service {
         }
     }
 
+    /**
+     * 
+     * @param {*} post format json pour ajouter une tache.
+     * @returns la response de axios (ajout de une tache), puis renvoie une erreur ou/et le loading si il y a.
+     */
     async servicePostTask(post) {
         try {
             console.log("[Service.js][servicePostTask] request post sended to axios");
@@ -53,6 +71,12 @@ class Service {
         }
     }
 
+    /**
+     * 
+     * @param {*} id id de la tache a modifier.
+     * @param {*} update format json avec les nouvelle donnee.
+     * @returns la response de axios (modification de une tache), puis renvoie une erreur ou/et le loading si il y a.
+     */
     async serviceUpdateTask(id, update) {
         try {
             console.log("[Service.js][serviceUpdateTask] request update sended to axios");
@@ -65,6 +89,11 @@ class Service {
         }
     }
 
+    /**
+     * 
+     * @param {*} id id pour eliminer une tache
+     * @returns la response de axios (elimination de une tache), puis renvoie une erreur ou/et le loading si il y a.
+     */
     async serviceRemoveTask(id) {
         try {
             console.log("[Service.js][serviceRemoveTask] request remove sended to axios");
@@ -77,6 +106,10 @@ class Service {
         }
     }
 
+    /**
+     * 
+     * @returns la response de axios (listes de colonnes), puis renvoie une erreur ou/et le loading si il y a.
+     */
     async serviceGetcolumns() {
         try {
             console.log("[Service.js][serviceGetColumns] request get sended to axios");
@@ -89,6 +122,11 @@ class Service {
         }
     }
 
+    /**
+     * 
+     * @param {*} post format json pour ajouter une colonne.
+     * @returns la response de axios (ajout de colonne), puis renvoie une erreur ou/et le loading si il y a.
+     */
     async servicePostColumn(post) {
         try {
             console.log("[Service.js][servicePostColumns] request post sended to axios");
@@ -101,6 +139,11 @@ class Service {
         }
     }
 
+    /**
+     * 
+     * @param {*} id id pour eliminer une colonne.
+     * @returns la response de axios (elimination de une colonne), puis renvoie une erreur ou/et le loading si il y a.
+     */
     async serviceRemoveColumn(id) {
         try {
             console.log("[Service.js][serviceRemoveColumns] request remove sended to axios");

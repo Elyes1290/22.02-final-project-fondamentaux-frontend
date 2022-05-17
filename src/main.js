@@ -1,24 +1,27 @@
 import { Service, loading, error } from "./service/Service.js";
 
+//instance de Service
 const service = new Service();
 
+//requete a json server
 let response = await service.serviceGetUsers();
 console.log(response)
 
 let response2 = await service.serviceGetTasks();
 console.log(response2)
 
-// const timeRegex = /^([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])(:|\.)\d{1,2}?$/; format 24H
-// const onlyletters = /^[a-zA-Z]+$/g; only letters
-
+//display info de erreur ou loading.
 const info = document.getElementById("info");
 
+//querySelector pour toutes les liste
 let tables = document.querySelectorAll(".odin");
 let listed = document.querySelectorAll(".thor");
 
+//querySelector pour les liste inicial de user et tache.
 let listTasks = document.querySelector("#listTasks");
 let listUsers = document.querySelector("#listUsers");
 
+//creation de chaque user.
 function createList(element) {
 
     let li = document.createElement("div");
@@ -30,6 +33,7 @@ function createList(element) {
     return listUsers;
 }
 
+//creation de card pour chaque tache.
 function createTasks(element) {
 
     let tasks0 = document.createElement("div");
@@ -52,7 +56,7 @@ function createTasks(element) {
     return listTasks;
 }
 
-
+// si loading est false et il a pas d'erreur, alors display des donnees
 if (loading === false && error === "") {
     for (let index = 0; index < response.length; index++) {
         createList(response[index]);
@@ -63,8 +67,10 @@ if (loading === false && error === "") {
     }
 }
 
+//selectionne toute les card cree.
 let divDrag = document.querySelectorAll(".drag");
 
+//utilization de sortable pour tous avec la classe thor
 for (let i = 0; i < listed.length; i++) {
 	new Sortable(listed[i], {
 		group: 'odin',
@@ -74,6 +80,7 @@ for (let i = 0; i < listed.length; i++) {
 	});
 }
 
+//utilization de sortable pour tous avec la classe odin
 for (let y = 0; y < tables.length; y++) {
 	new Sortable(tables[y], {
 		group: 'odin',
@@ -83,6 +90,7 @@ for (let y = 0; y < tables.length; y++) {
 	});
 }
 
+//utilization de sortable pour toutes les card puis pouvoir acceder a l'interieur des cards.
 for (let index = 0; index < divDrag.length; index++) {
     
     new Sortable(divDrag[index], {
