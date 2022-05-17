@@ -107,13 +107,13 @@ Sortable.create(foo, {
 //boucler les éléments de la base
 addTache.addEventListener("click",function(){
     console.log("clicked")
-    tachesUl.innerHTML += `<div>${inputTache.value}</div>`
+    tachesUl.innerHTML += `<div class="row list-group-item">${inputTache.value}</div>`
 })
 
 const ajouterUser = document.getElementById("ajouter-user")
 const inputUsers = document.getElementById("input-users")
 ajouterUser.addEventListener("click",function(){
-  usersUl.innerHTML += `<div>${inputUsers.value}</div>`
+  usersUl.innerHTML += `<div class="row list-group-item">${inputUsers.value}</div>`
 })
 
 const inputColumn = document.getElementById("input-column")
