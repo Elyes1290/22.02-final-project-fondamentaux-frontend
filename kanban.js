@@ -62,7 +62,7 @@ Sortable.create(foo, {
   
   
   for (const column of columns) {
-    ul.innerHTML += `<div  class="col column-containers  list-group">${column.name}
+    ul.innerHTML += `<div  class="col column-containers  list-group container-item">${column.name}
     <div id=${column.name} class="list-group-item"> 
       taches
     </div>
@@ -75,43 +75,38 @@ Sortable.create(foo, {
       swapThreshold: 1
       
     });
-    // column.name = document.getElementById(column.name)
-    // Sortable.create(column.name, {
-    //   group: 'foo',
-    //   animation: 100,
-    //   fallbackOnBody: true,
-    //   ghostClass: "ghost"
-      
-  // });
-    
   }
-  
+
+let containers = null;
+let sortableOption =  {group: "foo",
+animation: 100,
+fallbackOnBody: true,
+ghostClass: "ghost",
+swapThreshold: 1}
+
+
+
   for (const user of users) {
     usersUl.innerHTML += `<div class="row list-group-item">${user}</div>`
   }
   for (const tache of taches) {
-    tachesUl.innerHTML += `<div class="row list-group-item">${tache}</div>`
+    tachesUl.innerHTML += `<div class="row list-group-item container-item">${tache}</div>`
   }
   
-
-// for (const tache of taches) {
-//  let ulNew = document.getElementById(column.name)
-//  ulNew.innerHTML += `<li id=${tache} class="row">${tache}<li/>`
-// } 
-  //id globale
+  
+  
   const addTache = document.getElementById("ajouter-tache")
-// // const foo = document.getElementById("foo")
- const inputTache = document.getElementById("input-tache")
-
-// //demande à la base de donéée
-//boucler les éléments de la base
-addTache.addEventListener("click",function(){
+  const inputTache = document.getElementById("input-tache")
+  
+  // //demande à la base de donéée
+  //boucler les éléments de la base
+  addTache.addEventListener("click",function(){
     console.log("clicked")
     tachesUl.innerHTML += `<div class="row list-group-item">${inputTache.value}</div>`
-})
-
-const ajouterUser = document.getElementById("ajouter-user")
-const inputUsers = document.getElementById("input-users")
+  })
+  
+  const ajouterUser = document.getElementById("ajouter-user")
+  const inputUsers = document.getElementById("input-users")
 ajouterUser.addEventListener("click",function(){
   usersUl.innerHTML += `<div class="row list-group-item">${inputUsers.value}</div>`
 })
@@ -120,15 +115,15 @@ const inputColumn = document.getElementById("input-column")
 const ajouterColumn = document.getElementById("ajouter-column")
 
 ajouterColumn.addEventListener("click",function(){
-  ul.innerHTML += `<div  class="col column-containers  list-group">${inputColumn.value}
+  ul.innerHTML += `<div  class="col column-containers  list-group container-item">${inputColumn.value}
   <div  class="list-group-item"> 
-    taches
+  taches
   </div>
   <div/>`
 })
-// htmlElement.addEventListener('dragend', function(event){
-//     if(event.dataTransfer.dropEffect !== 'none'){
-//         $(this).remove();
-//     }
-// });
 
+// creation de sortable dans les columns
+containers = document.querySelectorAll(".container-item");
+for (var i = 0; i < containers.length; i++) {
+  new Sortable(containers[i],sortableOption );
+}
