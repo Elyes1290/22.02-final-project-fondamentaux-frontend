@@ -1,13 +1,13 @@
 # Page de Contact
 
-<h1>Les étapes à suivre</h1>
+## Les étapes à suivre
 1. Mettre en place un formulaire de contact et traiter les données POST
 2. Utilisation du service informaniak pour transmettre l'e-mail de l'utilisateur
 
-<h1>responsabilité</h1>
+## responsabilité
 - Une page d’enregistrement avec un formulaire
 
-<h2>informations concernant le formulaire</h2>
+## informations concernant le formulaire
 Récupérer les informations envoyées du formulaire, envoyer les informations au back-end
 via la fonction curlPost() qui vous est fournie et transmettre une notification par e-mail à
 l’utilisateur qui l’a transmis (il faudra donc à minima récupérer l’e-mail de l’utilisateur).
