@@ -1,0 +1,84 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "username": "Dante_35253",
+            "firstname": "Dante",
+            "lastname": "Dupont",
+            "email": "Dante_1213@gmail.com"
+        },
+        {
+            "id": 2,
+            "username": "Dante_35253",
+            "firstname": "Sami",
+            "lastname": "Dupont",
+            "email": "Dante_1213@gmail.com"
+        },
+        {
+            "id": 3,
+            "username": "Dante_35253",
+            "firstname": "Vinko",
+            "lastname": "Dupont",
+            "email": "Dante_1213@gmail.com"
+        },
+        {
+            "id": 4,
+            "username": "Dante_35253",
+            "firstname": "Bruno",
+            "lastname": "Dupont",
+            "email": "Dante_1213@gmail.com"
+        },
+        {
+            "id": 5,
+            "username": "Dante_35253",
+            "firstname": "Loic",
+            "lastname": "Dupont",
+            "email": "Dante_1213@gmail.com"
+        }
+    ],
+
+    "tasks" : [
+        {
+            "id": 1,
+            "name" : "manger",
+            "description": "asköfjhködjfökajsöfjasofjaf",
+            "date_from" : "17:00",
+            "date-to": "18:30",
+            "status": "open"
+        },
+        {
+            "id": 2,
+            "name" : "dormir",
+            "description": "asköfjhködjfökajsöfjasofjaf",
+            "date_from" : "17:00",
+            "date-to": "18:30",
+            "status": "open"
+        },
+        {
+            "id": 3,
+            "name" : "marcher",
+            "description": "asköfjhködjfökajsöfjasofjaf",
+            "date_from" : "17:00",
+            "date-to": "18:30",
+            "status": "open"
+        }
+    ], 
+
+    "columns" : [
+        {
+            "id": 1,
+            "name": "To Do",
+            "color": "red"
+        },
+        {
+            "id": 2,
+            "name": "To Do",
+            "color": "green"
+        },
+        {
+            "id": 3,
+            "name": "To Do",
+            "color": "yellow"
+        }
+    ]
+}
