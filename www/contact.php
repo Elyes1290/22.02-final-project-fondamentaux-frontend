@@ -5,7 +5,7 @@
     //clé public et clé privé /API
     define('API_PUBLIC_KEY', 'c91d380675c8bc250175763d942e31bf');
     define('API_PRIVATE_KEY', 'dab1ebe8cc4c94df3ccf59abce0772cb');
-    $mj = new \Mailjet\Client(API_USER, API_LOGIN,true,['version' => 'v3.1']);
+    $mj = new \mailjet\Client(API_USER, API_LOGIN,true,['version' => 'v3.1']);
 //vérification si les variables existent
 if(!empty($_POST['surname']) && !empty($_POST['firstname']) && !empty($_POST['message'])){
     $surname = htmlspecialchars($_POST['surname']);
