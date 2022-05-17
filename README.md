@@ -16,7 +16,7 @@ d’infomaniak, Google ou autre (La configuration SMTP est la même que lorsque 
 configurez la boîte e-mail de votre smartphone)
 
 
-<h3>Ne pas oublier</h3>
+### Ne pas oublier
 - Une page laissée “blanche” dans l’équipe JS Kanban va insérer sa réalisation
 - Une page laissée “blanche” dans l’équipe JS Calendrier va insérer sa réalisation
 
