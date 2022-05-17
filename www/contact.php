@@ -1,5 +1,5 @@
 <?php
-    require_once(__DIR__.'/vendor/autoload.php');
+    require_once(__DIR__  .'/vendor/autoload.php');
     //voir si ça fonctionne
     use \Mailjet\Resources;
     //clé public et clé privé /API
@@ -10,7 +10,7 @@
 if(!empty($_POST['surname']) && !empty($_POST['firstname']) && !empty($_POST['message'])){
     $surname = htmlspecialchars($_POST['surname']);
     $firstname = htmlspecialchars($_POST['firstname']);
-    $email = htmlspecialchars($_POST[̈́'email']);
+    $email = htmlspecialchars($_POST['email']);
     $motdepasse = htmlspecialchars($_POST['motdepasse']);
 
     if(filter_var($email, FILTER_VALIDATE_EMAIL)){
@@ -28,7 +28,7 @@ if(!empty($_POST['surname']) && !empty($_POST['firstname']) && !empty($_POST['me
                 ]
                 ],
                 'Subject' => "Demande d'inscription",
-                'TextPart' => '$email, $message', 
+                'TextPart' => '$email, $motdepasse', 
                 /* 'HTMLPart' => "",
                 'CustomID' => "" */
             ]
@@ -43,7 +43,7 @@ if(!empty($_POST['surname']) && !empty($_POST['firstname']) && !empty($_POST['me
         echo "Email non valide";
     }
     
-}else{
-    heade('Location:index.php');
+} else{
+    header('Location:index.php');
     die();
 }
