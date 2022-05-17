@@ -1,7 +1,9 @@
   
 document.addEventListener('DOMContentLoaded', async function () {
 
-   
+    let titreModal = document.getElementById('titre');
+    let descriptionModal = document.getElementById('description');
+
     let calendarEl = document.getElementById('calendar');
     let eventsForCalendar = [];
     console.log(eventsForCalendar)
@@ -39,8 +41,8 @@ document.addEventListener('DOMContentLoaded', async function () {
             right: 'today prev,next' // will normally be on the right. if RTL, will be on the left
           },
           events: eventsForCalendar,
-          eventClick: function(calendar) {
-            alert('Event: ' + calendar.event.calendarModal);
+          eventClick: function(event) {
+              
           }
         
         });
@@ -48,26 +50,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         
     });
 
-    let modalDetail = document.getElementById('modalDetail');
 
-modalDetail.addEventListener('show.bs.modal', function (event) {
-  // console.log(beers)const exampleModal = document.getElementById('exampleModal')
-  const button = event.relatedTarget
-  // Extract info from data-bs-* attributes
-  const recipient = button.getAttribute('id')
-  // If necessary, you could initiate an AJAX request here
-  // and then do the updating in a callback.
-  const item = beers.find(item => item.id === parseInt(recipient));
-
-  // Update the modal's content.
-  let description = document.getElementById("description");
-
-  description.textContent = item.description;
-
-  let nourriture = document.getElementById('nourriture');
-
-  nourriture.innerHTML = item.food_pairing;
-})
 
 
 async function getEventById() {
@@ -89,25 +72,4 @@ async function getEventsList() {
     } catch (e) {
         console.log(e)
     }
-}
-// get team
-async function getTeams() {
-    try {
-        let response = await axios.get("https://apitournoi.nait-web.com/api/equipe/list")
-        if (response.status !== 200) throw new Error('failed')
-        return response.data
-    } catch (e) {
-        console.log(e)
-    }
-}
-
-//get player list
-async function getPlayerList() {
-  try {
-      let response = await axios.get("https://apitournoi.nait-web.com/api/joueur/list")
-      if (response.status !== 200) throw new Error('failed')
-      return response.data
-  } catch (e) {
-      console.log(e)
-  }
 }
