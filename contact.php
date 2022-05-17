@@ -11,25 +11,26 @@ if(!empty($_POST['surname']) && !empty($_POST['firstname']) && !empty($_POST['me
     $surname = htmlspecialchars($_POST['surname']);
     $firstname = htmlspecialchars($_POST['firstname']);
     $email = htmlspecialchars($_POST[̈́'email']);
+    $motdepasse = htmlspecialchars($_POST['motdepasse']);
 
     if(filter_var($email, FILTER_VALIDATE_EMAIL)){
         $body = [
             'Messages' => [
             [
                 'From' => [
-                'Email' => "EMAIL",
-                'Name' => "NAME"
+                'Email' => "contact@diagodryson.com",
+                'Name' => "NoSignal"
                 ],
                 'To' => [
                 [
-                    'Email' => "EMAIL",
-                    'Name' => "NAME"
+                    'Email' => "contact@diagodryson.com",
+                    'Name' => "NoSignal"
                 ]
                 ],
-                'Subject' => "SUJECT",
-                'TextPart' => 'TEXT EMAIL', 
-                'HTMLPart' => "TEXT EMAIL",
-                'CustomID' => "AppGettingStartedTest"
+                'Subject' => "Demande d'inscription",
+                'TextPart' => '$email, $message', 
+                /* 'HTMLPart' => "",
+                'CustomID' => "" */
             ]
             ]
         ];
