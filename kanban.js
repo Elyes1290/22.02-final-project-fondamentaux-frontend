@@ -3,6 +3,8 @@ const ul = document.getElementById("foo")
 const usersUl = document.getElementById("users-list")
 const tachesUl = document.getElementById("taches-list")
 
+
+// les listes nécessaire au début du chargement de la page
 Sortable.create(foo, {
     group: 'foo',
     animation: 100,
@@ -42,7 +44,7 @@ Sortable.create(foo, {
     ghostClass: "ghost",
   });
  
-
+/// simulation des éléments de retour de la base données
   let users = ["Sami","Bruno","Loic","Vinko"]
   let taches = ["tache1", "tache2", "tache3", "tache4", "tache5"]
   let column1 = {
@@ -60,11 +62,11 @@ Sortable.create(foo, {
   let columns = [column1, column2, column3]
 
   
-  
+  ///Afficher les colonnes provenant futurement les éléments de la base de données
   for (const column of columns) {
     ul.innerHTML += `<div  class="col column-containers  list-group container-item">${column.name}
     <div id=${column.name} class="list-group-item"> 
-      taches
+      
     </div>
     <div/>`
     Sortable.create(foo, {
@@ -76,7 +78,7 @@ Sortable.create(foo, {
       
     });
   }
-
+// les options permettant de créee des listes
 let containers = null;
 let sortableOption =  {group: "foo",
 animation: 100,
@@ -85,39 +87,41 @@ ghostClass: "ghost",
 swapThreshold: 1}
 
 
-
+///Afficher les utilisateurs provenant futurement les éléments de la base de données
   for (const user of users) {
     usersUl.innerHTML += `<div class="row list-group-item">${user}</div>`
   }
+
+///Afficher les taches provenant futurement les éléments de la base de données
   for (const tache of taches) {
     tachesUl.innerHTML += `<div class="row list-group-item container-item">${tache}</div>`
   }
   
   
-  
+  //ajouter une tache
   const addTache = document.getElementById("ajouter-tache")
   const inputTache = document.getElementById("input-tache")
-  
-  // //demande à la base de donéée
-  //boucler les éléments de la base
   addTache.addEventListener("click",function(){
-    console.log("clicked")
-    tachesUl.innerHTML += `<div class="row list-group-item">${inputTache.value}</div>`
+    tachesUl.innerHTML += `<div class="row list-group-item container-item">${inputTache.value}</div>`
   })
   
+
+
+// ajouter un utilisateur
   const ajouterUser = document.getElementById("ajouter-user")
   const inputUsers = document.getElementById("input-users")
 ajouterUser.addEventListener("click",function(){
   usersUl.innerHTML += `<div class="row list-group-item">${inputUsers.value}</div>`
 })
 
+
+// ajouter une colonne
 const inputColumn = document.getElementById("input-column")
 const ajouterColumn = document.getElementById("ajouter-column")
-
 ajouterColumn.addEventListener("click",function(){
   ul.innerHTML += `<div  class="col column-containers  list-group container-item">${inputColumn.value}
   <div  class="list-group-item"> 
-  taches
+  
   </div>
   <div/>`
 })
