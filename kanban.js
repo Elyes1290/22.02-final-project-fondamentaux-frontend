@@ -138,8 +138,16 @@ addTache.addEventListener("click", function () {
   //  createDiv(myTachesClasses,inputTache.value,tachesUl)
   let newDiv = document.createElement("div");
   newDiv.classList.add("row", "list-group-item", "container-item");
+  let childButton = document.createElement("button");
+  childButton.value = "";
+  childButton.id = "modal";
+  childButton.className = "btn btn-primary";
+  childButton.setAttribute("type", "button");
+  childButton.setAttribute("data-bs-toggle", "modal");
+  childButton.setAttribute("data-bs-target", "#exampleModal");
   let newContent = document.createTextNode(inputTache.value);
   newDiv.appendChild(newContent);
+  newDiv.appendChild(childButton);
   tachesUl.appendChild(newDiv);
 });
 
