@@ -4,7 +4,7 @@
 1. Mettre en place un formulaire de contact et traiter les données POST
 =======
 2. Utilisation du service [MailJet](https://fr.mailjet.com/) pour transmettre l'e-mail de l'utilisateur
->>>>>>> 3d21bd5dfb9b59e720d384d07626d3036e07b9ec
+>>>>>>>
 
 ## responsabilité
 - Une page d’enregistrement avec un formulaire
