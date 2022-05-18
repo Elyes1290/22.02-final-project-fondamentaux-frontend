@@ -40,12 +40,25 @@ document.addEventListener('DOMContentLoaded', async function gettournoi() {
         dateClick: function(arg) {
           console.log(arg.date.toString()); // use local methods on the native Date Object
           // will output something like 'Sat Sep 01 2018 00:00:00 GMT-XX:XX (Eastern Daylight Time)'
-        }
+        },
+        eventClick: function(event, element) {
+                // Display the modal and set the values to the event values.
+                $('.modal').modal('show');
+                $('.modal').find('#title').val(event.title);
+                $('.modal').find('#starts-at').val(event.start);
+                $('.modal').find('#ends-at').val(event.end);
+
+            },
+            editable: true,
+            eventLimit: true // allow "more" link when too many events
+
+        });
+
+    
+      calendar.render();
     });
   
-    calendar.render();
   
-  });
   
   
   // Get Evenment
@@ -58,3 +71,6 @@ document.addEventListener('DOMContentLoaded', async function gettournoi() {
         console.log(e)
     }
   }
+
+  
+  
