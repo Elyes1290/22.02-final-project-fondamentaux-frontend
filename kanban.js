@@ -87,14 +87,24 @@ ghostClass: "ghost",
 swapThreshold: 1}
 
 
+myUsersClasses = ["row", "list-group-item"]
+myTachesClasses = ["row","list-group-item","container-item"]
+
 ///Afficher les utilisateurs provenant futurement les éléments de la base de données
   for (const user of users) {
-    usersUl.innerHTML += `<div class="row list-group-item">${user}</div>`
+    //  usersUl.innerHTML += `<div class="row list-group-item">${user}</div>`
+    //  createDiv(myUsersClasses,user,usersUl)
+   let newDiv = document.createElement("div")
+   newDiv.classList.add("row","list-group-item")
+   let newContent = document.createTextNode(user)
+   newDiv.appendChild(newContent)
+   usersUl.appendChild(newDiv)
   }
 
 ///Afficher les taches provenant futurement les éléments de la base de données
   for (const tache of taches) {
     tachesUl.innerHTML += `<div class="row list-group-item container-item">${tache}</div>`
+    // createDiv(myTachesClasses,tache,tachesUl)
   }
   
   
@@ -102,7 +112,8 @@ swapThreshold: 1}
   const addTache = document.getElementById("ajouter-tache")
   const inputTache = document.getElementById("input-tache")
   addTache.addEventListener("click",function(){
-    tachesUl.innerHTML += `<div class="row list-group-item container-item">${inputTache.value}</div>`
+     tachesUl.innerHTML += `<div class="row list-group-item container-item">${inputTache.value}</div>`
+    // createDiv(myTachesClasses,inputTache.value,tachesUl)
   })
   
 
@@ -130,4 +141,13 @@ ajouterColumn.addEventListener("click",function(){
 containers = document.querySelectorAll(".container-item");
 for (var i = 0; i < containers.length; i++) {
   new Sortable(containers[i],sortableOption );
+}
+
+
+function createDiv(classes, text, attachTo) {
+  const newDiv = document.createElement("div");
+  newDiv.classList.add(classes)
+  let newContent = document.createTextNode(text)
+  newDiv.appendChild(newContent)
+  attachTo.appendChild(newDiv);
 }
