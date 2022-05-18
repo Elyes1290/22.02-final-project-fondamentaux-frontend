@@ -5,7 +5,7 @@
     //clé public et clé privé /API
     define('API_PUBLIC_KEY', 'c91d380675c8bc250175763d942e31bf');
     define('API_PRIVATE_KEY', 'dab1ebe8cc4c94df3ccf59abce0772cb');
-    $mj = new \mailjet\Client(API_USER, API_LOGIN,true,['version' => 'v3.1']);
+    $mj = new \Mailjet\Client('API_USER','API_LOGIN',true,['version' => 'v3.1']);
 //vérification si les variables existent
 if(!empty($_POST['surname']) && !empty($_POST['firstname']) && !empty($_POST['message'])){
     $surname = htmlspecialchars($_POST['surname']);
@@ -15,6 +15,23 @@ if(!empty($_POST['surname']) && !empty($_POST['firstname']) && !empty($_POST['me
 
     if(filter_var($email, FILTER_VALIDATE_EMAIL)){
         $body = [
+            'Messages' => [
+              [
+                'From' => [
+                  'Email' => "contact@diagodryson.com",
+                  'Name' => "Diago"
+                ],
+                'To' => [
+                  [
+                    'Email' => "contact@diagodryson.com",
+                    'Name' => "Diago"
+                  ]
+                ],
+                'Subject' => "Greetings from Mailjet.",
+                'TextPart' => "My first Mailjet email",
+                'HTMLPart' => "<h3>Dear passenger 1, welcome to <a href='https://www.mailjet.com/'>Mailjet</a>!</h3><br />May the delivery force be with you!",
+                'CustomID' => "AppGettingStartedTest"
+        /* $body = [
             'Messages' => [
             [
                 'From' => [
@@ -29,13 +46,13 @@ if(!empty($_POST['surname']) && !empty($_POST['firstname']) && !empty($_POST['me
                 ],
                 'Subject' => "Demande d'inscription",
                 'TextPart' => '$email, $username', 
-                /* 'HTMLPart' => "",
+                'HTMLPart' => "",
                 'CustomID' => "" */
             ]
             ]
         ];
-            $response = $mj->post(Resources::$Email, ['body' => $body]);
-            $response->success();
+            $response = $mj->post(Resources::$Email,['body' => $body]);
+            $response->success(); var_dump($response->getData());
             echo "Email envoyé avec succès !";
 
     }
