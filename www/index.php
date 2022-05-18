@@ -25,7 +25,7 @@
                         <input type="email" name="email" placeholder="Email" autocomplete="off" class="form-control"/>
                         <div class="form-group">
                             <label label for="InputPassword"></label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Mot de passe">
+                            <input type="password" name="username" class="form-control" id="exampleInputPassword1" placeholder="Mot de passe">
                         </div>
                         <br/>
                         <button type="submit" class="btn btn-lg btn-primary">Envoyer</button>

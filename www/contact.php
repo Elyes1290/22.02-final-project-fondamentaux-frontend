@@ -11,7 +11,7 @@ if(!empty($_POST['surname']) && !empty($_POST['firstname']) && !empty($_POST['me
     $surname = htmlspecialchars($_POST['surname']);
     $firstname = htmlspecialchars($_POST['firstname']);
     $email = htmlspecialchars($_POST['email']);
-    $motdepasse = htmlspecialchars($_POST['motdepasse']);
+    $username = htmlspecialchars($_POST['username']);
 
     if(filter_var($email, FILTER_VALIDATE_EMAIL)){
         $body = [
@@ -28,7 +28,7 @@ if(!empty($_POST['surname']) && !empty($_POST['firstname']) && !empty($_POST['me
                 ]
                 ],
                 'Subject' => "Demande d'inscription",
-                'TextPart' => '$email, $motdepasse', 
+                'TextPart' => '$email, $username', 
                 /* 'HTMLPart' => "",
                 'CustomID' => "" */
             ]
