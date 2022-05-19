@@ -1,6 +1,7 @@
 const ul = document.getElementById("foo");
 const usersUl = document.getElementById("users-list");
 const tachesUl = document.getElementById("taches-list");
+let newTasks = [];
 
 // les listes nécessaire au début du chargement de la page
 Sortable.create(foo, {
@@ -37,6 +38,15 @@ Sortable.create(tachesUl, {
   swapThreshold: 1,
   ghostClass: "ghost",
 });
+
+async function postTasks(post) {
+  try {
+    const response = await axios.post("http://localhost:3000/tasks", post);
+    console.log(response)
+  } catch (err) {
+    console.log(err)
+  }
+}
 
 async function getusers () {
   try {
@@ -130,9 +140,7 @@ for (const user of users) {
 }
 
 ///Afficher les taches provenant futurement les éléments de la base de données
-for (const tache of taches) {
-  // tachesUl.innerHTML += `<div class="row list-group-item container-item">${tache}</div>`
-  //  createDiv(myTachesClasses,tache,tachesUl)
+function createTache(tache) {
   let newDiv = document.createElement("div");
   newDiv.classList.add("row", "list-group-item", "container-item");
   let childButton = document.createElement("button");
@@ -142,21 +150,31 @@ for (const tache of taches) {
   childButton.setAttribute("type", "button");
   childButton.setAttribute("data-bs-toggle", "modal");
   childButton.setAttribute("data-bs-target", "#exampleModal");
-  let newContent = document.createTextNode(tache.name);
+  let newContent = document.createElement("div");
+  newContent.textContent = tache.name;
   newDiv.appendChild(newContent);
   newDiv.appendChild(childButton);
   tachesUl.appendChild(newDiv);
 }
 
+for (const tache of taches) {
+  createTache(tache);
+}
+
 const Modal = document.getElementById('exampleModal')
 Modal.addEventListener('show.bs.modal', event => {
-  // Button that triggered the modal
-  const button = event.relatedTarget;
-  // Extract info from data-bs-* attributes
-  const recipient = button.value;
   
-  const item = taches.find(item => item.id == recipient)
+  const button = event.relatedTarget;
 
+  const recipient = button.value;
+  let item;
+
+  if (taches.find(item => item.id == recipient) !== undefined ) {
+    item = taches.find(item => item.id == recipient)
+  } else {
+    item = newTasks.find(item => item.id == recipient)
+  }
+  
   const modalTitle = exampleModal.querySelector('.modal-title')
 
   modalTitle.textContent = item.name;
@@ -164,23 +182,23 @@ Modal.addEventListener('show.bs.modal', event => {
 
 //ajouter une tache
 const addTache = document.getElementById("ajouter-tache");
-const inputTache = document.getElementById("input-tache");
+let j = 100;
 addTache.addEventListener("click", function () {
-  //  tachesUl.innerHTML += `<div class="row list-group-item container-item">${inputTache.value}</div>`
-  //  createDiv(myTachesClasses,inputTache.value,tachesUl)
-  let newDiv = document.createElement("div");
-  newDiv.classList.add("row", "list-group-item", "container-item");
-  let childButton = document.createElement("button");
-  childButton.value = "";
-  childButton.id = "modal";
-  childButton.className = "btn btn-primary";
-  childButton.setAttribute("type", "button");
-  childButton.setAttribute("data-bs-toggle", "modal");
-  childButton.setAttribute("data-bs-target", "#exampleModal");
-  let newContent = document.createTextNode(inputTache.value);
-  newDiv.appendChild(newContent);
-  newDiv.appendChild(childButton);
-  tachesUl.appendChild(newDiv);
+
+  //const inputTache = document.getElementById("input-tache");
+  const dataTask = {
+    id: j++,
+    name: document.getElementById("input-tache").value,
+    description: "djskdéfjskfjsdkéfsddsdsdsdsdsd",
+    date_from: "17:00",
+    date_to: "18:00",
+    status: "open"
+  }
+
+  newTasks.push(dataTask);
+  
+  postTasks(dataTask);
+  createTache(dataTask);
 });
 
 // ajouter un utilisateur
