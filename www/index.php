@@ -18,7 +18,7 @@
                             <h1>Connexion</h1>
                         </div>
                      <div class="d-flex">
-                            <input type="text" name="surname" placeholder="Nom" autocomplete="off"class="form-control"/>
+                            <input type="text" name="lastname" placeholder="Nom" autocomplete="off"class="form-control"/>
                             <input type="text" name="firstname" placeholder="Prénom" autocomplete="off" class="form-control"/>
                         </div>
                         <br/>
