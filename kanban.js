@@ -182,12 +182,15 @@ Modal.addEventListener('show.bs.modal', event => {
 
 //ajouter une tache
 const addTache = document.getElementById("ajouter-tache");
-let j = 100;
+
+function randomNum(min, max) {
+  let j = Math.floor(Math.random() * (max - min + 1) + min);
+}
 addTache.addEventListener("click", function () {
 
   //const inputTache = document.getElementById("input-tache");
   const dataTask = {
-    id: j++,
+    id: randomNum(0, 999),
     name: document.getElementById("input-tache").value,
     description: "djskdéfjskfjsdkéfsddsdsdsdsdsd",
     date_from: "17:00",

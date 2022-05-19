@@ -60,14 +60,6 @@
       "date_from": "17:00",
       "date-to": "18:30",
       "status": "open"
-    },
-    {
-      "id": 100,
-      "name": "dormir plussd",
-      "description": "djskdéfjskfjsdkéfsddsdsdsdsdsd",
-      "date_from": "17:00",
-      "date_to": "18:00",
-      "status": "open"
     }
   ],
   "columns": [
