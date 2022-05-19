@@ -41,6 +41,15 @@ Sortable.create(tachesUl, {
 /// simulation des éléments de retour de la base données
 let users = ["Sami", "Bruno", "Loic", "Vinko"];
 let taches = ["tache1", "tache2", "tache3", "tache4", "tache5"];
+let tache1 = {
+  id: "1",
+  name: "lol",
+};
+let tache2 = {
+  id: "2",
+  name: "toto",
+};
+
 let column1 = {
   name: "ToDO",
   color: "red",
@@ -119,11 +128,12 @@ for (const tache of taches) {
   newDiv.classList.add("row", "list-group-item", "container-item");
   let childButton = document.createElement("button");
   childButton.value = "";
-  childButton.id = "modal";
+  childButton.id = "modalDisc";
   childButton.className = "btn btn-primary";
   childButton.setAttribute("type", "button");
   childButton.setAttribute("data-bs-toggle", "modal");
-  childButton.setAttribute("data-bs-target", "#exampleModal");
+  childButton.setAttribute("data-bs-target", "#modalDisc");
+  childButton.setAttribute("data-bs-whatever", taches.id);
   let newContent = document.createTextNode(tache);
   newDiv.appendChild(newContent);
   newDiv.appendChild(childButton);
@@ -140,16 +150,35 @@ addTache.addEventListener("click", function () {
   newDiv.classList.add("row", "list-group-item", "container-item");
   let childButton = document.createElement("button");
   childButton.value = "";
-  childButton.id = "modal";
+  childButton.id = "modalDisc";
   childButton.className = "btn btn-primary";
   childButton.setAttribute("type", "button");
   childButton.setAttribute("data-bs-toggle", "modal");
-  childButton.setAttribute("data-bs-target", "#exampleModal");
+  childButton.setAttribute("data-bs-target", "#modalDisc");
+  // childButton.setAttribute("data-bs-whatever", inputTache.value);
   let newContent = document.createTextNode(inputTache.value);
   newDiv.appendChild(newContent);
   newDiv.appendChild(childButton);
   tachesUl.appendChild(newDiv);
 });
+
+// //Modal (WIP) (Bruno)
+// var modalDisc = document.getElementById("modalDisc");
+// modalDisc.addEventListener("show.bs.modal", function (event) {
+//   // Button that triggered the modal
+//   var button = event.relatedTarget;
+//   // Extract info from data-bs-* attributes
+//   var recipient = button.getAttribute("data-bs-whatever");
+//   // If necessary, you could initiate an AJAX request here
+//   // and then do the updating in a callback.
+//   //
+//   // Update the modal's content.
+//   var modalTitle = exampleModal.querySelector(".modal-title");
+//   var modalBodyInput = exampleModal.querySelector(".modal-body input");
+
+//   modalTitle.textContent = "New message to " + recipient;
+//   modalBodyInput.value = recipient;
+// });
 
 // ajouter un utilisateur
 const ajouterUser = document.getElementById("ajouter-user");
