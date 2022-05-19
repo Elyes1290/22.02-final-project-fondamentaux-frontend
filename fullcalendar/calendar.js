@@ -2,9 +2,10 @@ document.addEventListener('DOMContentLoaded', async function gettournoi() {
 
 
     let calendarEl = document.getElementById('calendar');
-    // let nomMonEvenement = ""
-    // let datemonEvenement = ""
-    // let heureMonEvenement = ""
+    let namecal = document.getElementById("name")
+    let descirptioncal = document.getElementById("description")
+    let datefromcal = document.getElementById("datefrom")
+    let datetocal=document.getElementById("dateto")
     let eventsForCalendar = [];
   
     //obtenir les ino depuis l'api
@@ -15,18 +16,17 @@ document.addEventListener('DOMContentLoaded', async function gettournoi() {
     for (const element of eventsList) { 
         let objectToPush = {
             id: element.id,
-            name: element.name,
-            descirption: element.descirption,
+            title: element.name,
             allDay: false,
             start: element.date_from, 
             end: element.date_to
         }
-  
+        // namecal.innerHTML = objectToPush.name;
         eventsForCalendar.push(objectToPush)
+        console.log(eventsForCalendar)
+
     }
-  
-    console.log(eventsForCalendar)
-  
+    console.log(calendarEl);
     var calendar = new FullCalendar.Calendar(calendarEl, {
         locale: 'fr',
         headerToolbar:  {
@@ -41,14 +41,17 @@ document.addEventListener('DOMContentLoaded', async function gettournoi() {
           console.log(arg.date.toString()); // use local methods on the native Date Object
           // will output something like 'Sat Sep 01 2018 00:00:00 GMT-XX:XX (Eastern Daylight Time)'
         },
-        eventClick: function(event, element) {
+        eventClick: function(info) {
                 // Display the modal and set the values to the event values.
-                $('.modal').modal('show');
-                $('.modal').find('#title').val(event.title);
-                $('.modal').find('#starts-at').val(event.start);
-                $('.modal').find('#ends-at').val(event.end);
+                console.log("Event", info.event.id)
+                const eventFound = eventsList.find((e) => e.id === info.event.id)
+                // eventFoundconsole.log("Element", eventFound)
 
-            },
+                $('.modal').modal('show');
+                namecal.innerText = info.event.title
+                descirptioncal.innerText = info.event.
+
+        },
             editable: true,
             eventLimit: true // allow "more" link when too many events
 

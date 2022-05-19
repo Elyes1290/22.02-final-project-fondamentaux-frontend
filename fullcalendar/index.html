@@ -22,31 +22,18 @@
           <div class="modal-content">
               <div class="modal-header">
                   <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title">Create new event</h4>
               </div>
               <div class="modal-body">
                   <div class="row">
                       <div class="col-xs-12">
-                          <label class="col-xs-4" for="title">Event title</label>
-                          <input type="text" name="title" id="title" />
+                          <label class="col-xs-4" for="title"></label>
+                          <p id="name"></p>
+                          <p id="description"></p>
+                          <p id="datefrom"></p>
+                          <p id="dateto"></p>
                       </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-xs-12">
-                          <label class="col-xs-4" for="starts-at">Starts at</label>
-                          <input type="text" name="starts_at" id="starts-at" />
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-xs-12">
-                          <label class="col-xs-4" for="ends-at">Ends at</label>
-                          <input type="text" name="ends_at" id="ends-at" />
-                      </div>
-                  </div>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary" id="save-event">Save changes</button>
+      
+                  <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button><button type="button" class="btn btn-primary" id="save-event">Save changes</button>
               </div>
           </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
