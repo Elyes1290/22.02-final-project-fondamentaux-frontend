@@ -1,3 +1,6 @@
+
+import { formatDate } from '@fullcalendar/core';
+
 document.addEventListener('DOMContentLoaded', async function gettournoi() {
 
 
@@ -5,7 +8,30 @@ document.addEventListener('DOMContentLoaded', async function gettournoi() {
   let namecal = document.getElementById("name")
   let datefromcal = document.getElementById("datefrom")
   let datetocal = document.getElementById("dateto")
+  let descriptionModal = document.getElementById('description')
   let eventsForCalendar = [];
+
+
+
+    // ##################### Essai format date ################################
+
+
+
+    let str = formatDate('2018-09-01', {
+      month: 'long',
+      year: 'numeric',
+      day: 'long',
+      day: 'numeric',
+timeZoneName: 'short',
+      timeZone: 'UTC',
+      locale: 'fr',
+      hour12: false,
+    })
+
+    console.log(str) // "1 de septiembre de 2018 0:00 UTC"
+
+    // ################################################################################
+
 
   //obtenir les ino depuis l'api
   let eventsList = await getEvents()
@@ -16,9 +42,10 @@ document.addEventListener('DOMContentLoaded', async function gettournoi() {
     let objectToPush = {
       id: element.id,
       title: element.name,
-      allDay: false,
+      // allDay: false,
       start: element.date_from,
-      end: element.date_to
+      end: element.date_to,
+      display: element.description
     }
     // namecal.innerHTML = objectToPush.name;
     eventsForCalendar.push(objectToPush)
@@ -35,21 +62,27 @@ document.addEventListener('DOMContentLoaded', async function gettournoi() {
       right: 'today prev,next', // will normally be on the right. if RTL, will be on the left
 
     },
+
     events: eventsForCalendar,
     dateClick: function (arg) {
       console.log(arg.date.toString()); // use local methods on the native Date Object
       // will output something like 'Sat Sep 01 2018 00:00:00 GMT-XX:XX (Eastern Daylight Time)'
     },
+
     eventClick: function (info) {
       // Display the modal and set the values to the event values.
       console.log("Event", info.event.id)
       const eventFound = eventsList.find((e) => e.id === info.event.id)
       // eventFoundconsole.log("Element", eventFound)
 
+
       $('.modal').modal('show');
       namecal.innerText = info.event.title
+      descriptionModal.innerText = info.event.display
+      datefromcal.innerText = info.event.start
+      datetocal.innerText = info.event.end
 
-        },
+    },
     editable: true,
     eventLimit: true // allow "more" link when too many events
 
