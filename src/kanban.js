@@ -13,6 +13,9 @@ const ajouterColumn = document.getElementById("ajouter-column");
 const ajouterUser = document.getElementById("ajouter-user");
 const inputUsers = document.getElementById("input-users");
 
+//input modal
+let p = document.querySelectorAll(".thor");
+
 // les listes nécessaire au début du chargement de la page
 Sortable.create(foo, {
   group: "foo",
@@ -219,26 +222,29 @@ Modal.addEventListener('show.bs.modal', event => {
 })
 
 async function saveChanges(value) {
-  console.log("hello")
+
   const update = {
-      
+    name: p[0].value,
+    description: p[1].value,
+    date_from: p[2].value,
+    date_to: p[3].value,
+    status: p[4].value,
   };
 
-  //await Service.updateTask(value, update);
+  await Service.updateTask(value, update);
 }
 
 // Donnés dans modal Sam -------------------------------------------------------------------------------------------------
 
 function generateTasks(item) {
-  console.log(item);
 
-  let p = document.querySelectorAll(".thor");
   //Add innerHTML depending on index
                           
-  p[0].textContent = 'Name: ' + item.name
-  p[1].textContent = 'Description: ' + item.description;
-  p[2].textContent = 'Debut ' + item.date_from + ' -' + ' Fin ' + item.date_to;
-  p[3].textContent = "Status: " + item.status;
+  p[0].setAttribute("placeholder", item.name);
+  p[1].setAttribute("placeholder", item.description);
+  p[2].setAttribute("placeholder", item.date_from);
+  p[3].setAttribute("placeholder", item.date_to);
+  p[4].setAttribute("placeholder", item.status);
 }
 
 let taskModalEl = document.getElementById('taskModal')

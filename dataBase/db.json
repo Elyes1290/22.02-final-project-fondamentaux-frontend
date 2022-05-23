@@ -38,19 +38,19 @@
   ],
   "tasks": [
     {
-      "id": 1,
       "name": "manger",
-      "description": "asköfjhködjfökajsöfjasofjaf",
-      "date_from": "17:00",
-      "date-to": "18:30",
-      "status": "open"
+      "description": "ajafkjasf",
+      "date_from": "12:00",
+      "date_to": "13:00",
+      "status": "open",
+      "id": 1
     },
     {
       "id": 2,
       "name": "dormir",
       "description": "asköfjhködjfökajsöfjasofjaf",
       "date_from": "17:00",
-      "date-to": "18:30",
+      "date_to": "18:30",
       "status": "open"
     },
     {
@@ -58,7 +58,7 @@
       "name": "marcher",
       "description": "asköfjhködjfökajsöfjasofjaf",
       "date_from": "17:00",
-      "date-to": "18:30",
+      "date_to": "18:30",
       "status": "open"
     }
   ],
