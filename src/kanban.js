@@ -5,6 +5,14 @@ const usersUl = document.getElementById("users-list");
 const tachesUl = document.getElementById("taches-list");
 let newTasks = [];
 
+// ajouter une colonne
+const inputColumn = document.getElementById("input-column");
+const ajouterColumn = document.getElementById("ajouter-column");
+
+// ajouter un utilisateur
+const ajouterUser = document.getElementById("ajouter-user");
+const inputUsers = document.getElementById("input-users");
+
 // les listes nécessaire au début du chargement de la page
 Sortable.create(foo, {
   group: "foo",
@@ -28,7 +36,7 @@ Sortable.create(foo, {
   swapThreshold: 1,
 });
 Sortable.create(usersUl, {
-  group: "foo",
+  group: { name: "foo", pull: "clone", put: false},
   animation: 100,
   fallbackOnBody: true,
   swapThreshold: 1,
@@ -40,6 +48,17 @@ Sortable.create(tachesUl, {
   swapThreshold: 1,
   ghostClass: "ghost",
 });
+
+const drag = document.querySelectorAll(".drag");
+for(let item of drag) {
+  Sortable.create(item, {
+      group: "foo",
+      animation: 150,
+      fallbackOnBody: true,
+      ghostClass: "ghost",
+      swapThreshold: 1,
+  }); 
+}
 
 /// simulation des éléments de retour de la base données
 let users = await Service.getUsers();
@@ -59,56 +78,58 @@ let sortableOption = {
   swapThreshold: 1,
 };
 
-//myUsersClasses = ["row", "list-group-item"];
-//myTachesClasses = ["row", "list-group-item", "container-item"];
-//myColumnsClasses = ["col", "column-containers", "list-group", "container-item"];
-//myColumnsChildsClasses = ["list-group-item"];
+function createColumns(column) {
+
+  let div1 = document.createElement("div");
+  div1.className = "card col bg-opacity-25 bg-" + column.color;
+
+  let div2 = document.createElement("div");
+  div2.className = "text-center fw-bold card-header mb-2";
+  div2.textContent = column.value == undefined ? column.name : column.value;
+
+  let div3 = document.createElement("div");
+  div3.className = "card-text text-center drag minH";
+
+  div1.appendChild(div2);
+  div1.appendChild(div3)
+  ul.appendChild(div1);
+
+  return ul;
+}
 
 ///Afficher les colonnes provenant futurement les éléments de la base de données
 for (const column of columns) {
-  ul.innerHTML += `<div  class="col column-containers  list-group container-item">${column.name}
-    <div id=${column.name} class="list-group-item"> 
-      
-    </div>
-    <div/>`;
-  // let newDiv = document.createElement("div")
-  // newDiv.setAttribute("id",column.name+"a")
-  // newDiv.classList.add(...myColumnsClasses)
-  // let newContent = document.createTextNode(column.name)
-  // newDiv.appendChild(newContent)
-  // attachTo.appendChild(newDiv);
+  createColumns(column);
+}
 
-  // let newDiv2 = document.createElement("div")
-  // newDiv2.setAttribute("id",column.name)
-  // newDiv2.classList.add(...myColumnsChildsClasses)
-  // let newContent2 = document.createTextNode("")
-  // newDiv2.appendChild(newContent2)
-  // newDiv.appendChild(newDiv2)
+ajouterColumn.addEventListener("click", function () {
+  createColumns(inputColumn);
+  inputColumn.value = "";
+});
 
-  Sortable.create(foo, {
-    group: "foo",
-    animation: 100,
-    fallbackOnBody: true,
-    ghostClass: "ghost",
-    swapThreshold: 1,
-  });
+function createUsers(user) {
+  let newDiv = document.createElement("div");
+  newDiv.classList.add("row", "list-group-item");
+  newDiv.textContent = user.value == undefined ? user.firstname : user.value;
+
+  usersUl.appendChild(newDiv);
 }
 
 ///Afficher les utilisateurs provenant futurement les éléments de la base de données
 for (const user of users) {
-  //  usersUl.innerHTML += `<div class="row list-group-item">${user}</div>`
-  // createDiv(myUsersClasses,user,usersUl)
-  let newDiv = document.createElement("div");
-  newDiv.classList.add("row", "list-group-item");
-  let newContent = document.createTextNode(user);
-  newDiv.appendChild(newContent);
-  usersUl.appendChild(newDiv);
+  createUsers(user)
 }
+
+ajouterUser.addEventListener("click", function () {
+  createUsers(inputUsers);
+  inputUsers.value = "";
+});
 
 ///Afficher les taches provenant futurement les éléments de la base de données
 function createTache(tache) {
   let newDiv = document.createElement("div");
   newDiv.classList.add("row", "list-group-item", "container-item");
+
   let childButton = document.createElement("button");
   childButton.value = tache.id;
   childButton.id = "modal";
@@ -116,6 +137,7 @@ function createTache(tache) {
   childButton.setAttribute("type", "button");
   childButton.setAttribute("data-bs-toggle", "modal");
   childButton.setAttribute("data-bs-target", "#exampleModal");
+
   let newContent = document.createElement("div");
   newContent.textContent = tache.name;
   newDiv.appendChild(newContent);
@@ -126,6 +148,32 @@ function createTache(tache) {
 for (const tache of taches) {
   createTache(tache);
 }
+
+//ajouter une tache
+const addTache = document.getElementById("ajouter-tache");
+
+function randomNum(min, max) {
+  let j = Math.floor(Math.random() * (max - min + 1) + min);
+}
+addTache.addEventListener("click", async function () {
+
+  //const inputTache = document.getElementById("input-tache");
+  const dataTask = {
+    id: randomNum(0, 999),
+    name: document.getElementById("input-tache").value,
+    description: "djskdéfjskfjsdkéfsddsdsdsdsdsd",
+    date_from: "17:00",
+    date_to: "18:00",
+    status: "open"
+  }
+
+  newTasks.push(dataTask);
+  
+  await Service.postTask(dataTask);
+  createTache(dataTask);
+
+  document.getElementById("input-tache").value = "";
+});
 
 const Modal = document.getElementById('exampleModal')
 Modal.addEventListener('show.bs.modal', event => {
@@ -177,60 +225,8 @@ async function saveChanges(value) {
   //await Service.updateTask(value, update);
 }
 
-//ajouter une tache
-const addTache = document.getElementById("ajouter-tache");
-
-function randomNum(min, max) {
-  let j = Math.floor(Math.random() * (max - min + 1) + min);
-}
-addTache.addEventListener("click", async function () {
-
-  //const inputTache = document.getElementById("input-tache");
-  const dataTask = {
-    id: randomNum(0, 999),
-    name: document.getElementById("input-tache").value,
-    description: "djskdéfjskfjsdkéfsddsdsdsdsdsd",
-    date_from: "17:00",
-    date_to: "18:00",
-    status: "open"
-  }
-
-  newTasks.push(dataTask);
-  
-  Service.postTask(dataTask);
-  createTache(dataTask);
-});
-
-// ajouter un utilisateur
-const ajouterUser = document.getElementById("ajouter-user");
-const inputUsers = document.getElementById("input-users");
-ajouterUser.addEventListener("click", function () {
-  // usersUl.innerHTML += `<div class="row list-group-item">${inputUsers.value}</div>`
-  createDiv(myUsersClasses, inputUsers.value, usersUl);
-});
-
-// ajouter une colonne
-const inputColumn = document.getElementById("input-column");
-const ajouterColumn = document.getElementById("ajouter-column");
-ajouterColumn.addEventListener("click", function () {
-  ul.innerHTML += `<div  class="col column-containers  list-group container-item">${inputColumn.value}
-  <div  class="list-group-item"> 
-  
-  </div>
-  <div/>`;
-});
-
 // creation de sortable dans les columns
 containers = document.querySelectorAll(".container-item");
 for (var i = 0; i < containers.length; i++) {
   new Sortable(containers[i], sortableOption);
-}
-
-// function permettant d'ajouter une div avec des classes,un contenu et de l'attacher quelque part
-function createDiv(classes, text, attachTo) {
-  const newDiv = document.createElement("div");
-  newDiv.classList.add(...classes);
-  let newContent = document.createTextNode(text);
-  newDiv.appendChild(newContent);
-  attachTo.appendChild(newDiv);
 }
