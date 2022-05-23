@@ -1,3 +1,3 @@
 
 Made with <g-emoji class="g-emoji" alias="heart" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png">
-<img class="emoji" alt="heart" height="20" width="20" src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png"></g-emoji> by m1,m2,m3,m4,m5,m6.,m7
+<img class="emoji" alt="heart" height="20" width="20" src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png"></g-emoji> by Bachir AOUAD, Olivier CARDONA, Diago CORTEZ, moi, Lamine SAKHO, Loic GOSSELKE, Xavier DU JUAN, Bruno DA SILVA, Diogo FERREIRA, Elyes NAIT, Gabriel DUARTE, Sami KHERBACHE, Yonathan FAVRE, Boubakar SOW, Gabriel FERREIRA, Patrick VAVRINA, Vinko RODITI.
