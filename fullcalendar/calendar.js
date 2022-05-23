@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', async function gettournoi() {
   let status = document.getElementById('status')
   let eventsForCalendar = [];
   
- 
 
   //obtenir les infos depuis l'api
   let eventsList = await getEvents()
@@ -24,7 +23,6 @@ document.addEventListener('DOMContentLoaded', async function gettournoi() {
       start: element.date_from,
       end: element.date_to,
       display: element.description + " \n " + element.status,
-      // display: element.status
     } 
 
     eventsForCalendar.push(objectToPush)
@@ -60,7 +58,6 @@ document.addEventListener('DOMContentLoaded', async function gettournoi() {
       // status.innerText = info.event.display
       datefromcal.innerText = "Commence le : " + new Intl.DateTimeFormat('fr-FR', { dateStyle: 'full', timeStyle: 'short' }).format(dateDebut)
       datetocal.innerText = "Se termine le : " + new Intl.DateTimeFormat('fr-FR', { dateStyle: 'full', timeStyle: 'short' }).format(dateFin)
-      console.log(info.event.eventDisplay)
     },
     editable: true,
 
@@ -68,7 +65,6 @@ document.addEventListener('DOMContentLoaded', async function gettournoi() {
 
   calendar.render();
 });
-
 
 
 // Get Evenment
