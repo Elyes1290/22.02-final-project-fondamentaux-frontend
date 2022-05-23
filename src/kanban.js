@@ -13,56 +13,6 @@ const ajouterColumn = document.getElementById("ajouter-column");
 const ajouterUser = document.getElementById("ajouter-user");
 const inputUsers = document.getElementById("input-users");
 
-//input modal
-let p = document.querySelectorAll(".thor");
-
-// les listes nécessaire au début du chargement de la page
-Sortable.create(foo, {
-  group: "foo",
-  animation: 100,
-  fallbackOnBody: true,
-  ghostClass: "ghost",
-  swapThreshold: 1,
-});
-// Sortable.create(foo, {
-//   group: "foo",
-//   animation: 100,
-//   fallbackOnBody: true,
-//   ghostClass: "ghost",
-//   swapThreshold: 1,
-// });
-// Sortable.create(foo, {
-//   group: "foo",
-//   animation: 100,
-//   fallbackOnBody: true,
-//   ghostClass: "ghost",
-//   swapThreshold: 1,
-// });
-Sortable.create(usersUl, {
-  group: { name: "foo", pull: "clone", put: false },
-  animation: 100,
-  fallbackOnBody: true,
-  swapThreshold: 1,
-});
-Sortable.create(tachesUl, {
-  group: "foo",
-  animation: 100,
-  fallbackOnBody: true,
-  swapThreshold: 1,
-  ghostClass: "ghost",
-});
-
-const drag = document.querySelectorAll(".drag");
-for (let item of drag) {
-  Sortable.create(item, {
-    group: "foo",
-    animation: 150,
-    fallbackOnBody: true,
-    ghostClass: "ghost",
-    swapThreshold: 1,
-  });
-}
-
 /// simulation des éléments de retour de la base données
 let users = await Service.getUsers();
 console.log(users);
@@ -134,6 +84,7 @@ function createTache(tache) {
   newDiv.classList.add("row", "list-group-item", "container-item");
 
   let childButton = document.createElement("button");
+  childButton.textContent = "description";
   childButton.value = tache.id;
   childButton.id = "modal";
   childButton.className = "btn btn-primary";
@@ -142,10 +93,7 @@ function createTache(tache) {
   childButton.setAttribute("data-bs-target", "#exampleModal");
 
   let newContent = document.createElement("div");
-  let btnContent = document.createElement("Discription");
-
   newContent.textContent = tache.name;
-  childButton.appendChild(btnContent);
   newDiv.appendChild(newContent);
   newDiv.appendChild(childButton);
   tachesUl.appendChild(newDiv);
@@ -221,6 +169,8 @@ Modal.addEventListener("show.bs.modal", (event) => {
   generateTasks(item);
 });
 
+let p = document.querySelectorAll(".thor");
+
 async function saveChanges(value) {
   const update = {
     name: p[0].value,
@@ -245,10 +195,57 @@ function generateTasks(item) {
   p[4].setAttribute("placeholder", item.status);
 }
 
-let taskModalEl = document.getElementById("taskModal");
-taskModalEl.addEventListener("show.bs.modal", generateTasks);
-
 // -------------------------------------------------------------------------------------------------------------------
+
+//input modal
+
+// les listes nécessaire au début du chargement de la page
+Sortable.create(foo, {
+  group: { name: "foo", pull: false, put: false },
+  animation: 100,
+  fallbackOnBody: true,
+  ghostClass: "ghost",
+  swapThreshold: 1,
+});
+// Sortable.create(foo, {
+//   group: "foo",
+//   animation: 100,
+//   fallbackOnBody: true,
+//   ghostClass: "ghost",
+//   swapThreshold: 1,
+// });
+// Sortable.create(foo, {
+//   group: "foo",
+//   animation: 100,
+//   fallbackOnBody: true,
+//   ghostClass: "ghost",
+//   swapThreshold: 1,
+// });
+Sortable.create(usersUl, {
+  group: { name: "foo", pull: "clone", put: false },
+  animation: 100,
+  fallbackOnBody: true,
+  swapThreshold: 1,
+});
+Sortable.create(tachesUl, {
+  group: "foo",
+  animation: 100,
+  fallbackOnBody: true,
+  swapThreshold: 1,
+  ghostClass: "ghost",
+});
+
+const drag = document.querySelectorAll(".drag");
+console.log(drag);
+for (let item of drag) {
+  Sortable.create(item, {
+    group: "foo",
+    animation: 150,
+    fallbackOnBody: true,
+    ghostClass: "ghost",
+    swapThreshold: 1,
+  });
+}
 
 // creation de sortable dans les columns
 containers = document.querySelectorAll(".container-item");
