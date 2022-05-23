@@ -163,6 +163,11 @@ for (const tache of taches) {
 
 const Modal = document.getElementById('exampleModal')
 Modal.addEventListener('show.bs.modal', event => {
+
+
+  if (document.querySelector("#buttonSave")) {
+    document.querySelector("#buttonSave").remove();
+  }
   
   const button = event.relatedTarget;
 
@@ -178,7 +183,33 @@ Modal.addEventListener('show.bs.modal', event => {
   const modalTitle = exampleModal.querySelector('.modal-title')
 
   modalTitle.textContent = item.name;
+
+  const footerModal = Modal.querySelector('.modal-footer');
+
+  const buttonSave = document.createElement("button");
+  buttonSave.setAttribute("type", "button");
+  buttonSave.id = "buttonSave";
+  buttonSave.value = item.id;
+  buttonSave.className = "btn btn-success";
+  buttonSave.setAttribute("data-bs-dismiss", "modal");
+  buttonSave.textContent = "Save";
+  
+  buttonSave.addEventListener("click", (event) => {
+    event.preventDefault();
+    saveChanges(event.target.value);
+  });
+
+  footerModal.appendChild(buttonSave);
 })
+
+async function saveChanges(value) {
+  console.log("hello")
+  const update = {
+      
+  };
+
+  //await Service.updateTask(value, update);
+}
 
 //ajouter une tache
 const addTache = document.getElementById("ajouter-tache");
