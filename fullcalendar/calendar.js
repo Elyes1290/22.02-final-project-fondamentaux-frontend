@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', async function gettournoi() {
     let objectToPush = {
       id: element.id,
       title: element.name,
-      // allDay: false,
       start: element.date_from,
       end: element.date_to,
       display: element.description
@@ -31,11 +30,15 @@ document.addEventListener('DOMContentLoaded', async function gettournoi() {
   const calendar = new FullCalendar.Calendar(calendarEl, {
     
     headerToolbar: {
-
+      
       left: "dayGridMonth, dayGridWeek, timeGrid, list", // will normally be on the left. if RTL, will be on the right
       center: 'title',
       right: 'today prev,next', // will normally be on the right. if RTL, will be on the left
-
+      today:    "Aujourd'hui",
+      month:    'Mois',
+      week:     'Semaine',
+      day:      'Jour',
+      list:     'Liste',
     },
 
     events: eventsForCalendar,
