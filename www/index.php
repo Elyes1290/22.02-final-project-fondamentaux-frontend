@@ -6,14 +6,6 @@ syntax
 
 */
 ?>
-<?php
-    $title="";
-    if(isset($_POST['acceuil'])){
-        $title="ACCEUIIL";
-    }else{
-        $title="RIEN";
-    }
-?>
 
 <!DOCTYPE html>
 <html lang="fr">
