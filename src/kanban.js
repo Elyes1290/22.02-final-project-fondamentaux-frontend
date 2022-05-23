@@ -214,6 +214,8 @@ Modal.addEventListener('show.bs.modal', event => {
   });
 
   footerModal.appendChild(buttonSave);
+
+  generateTasks(item)
 })
 
 async function saveChanges(value) {
@@ -224,6 +226,25 @@ async function saveChanges(value) {
 
   //await Service.updateTask(value, update);
 }
+
+// Donnés dans modal Sam -------------------------------------------------------------------------------------------------
+
+function generateTasks(item) {
+  console.log(item);
+
+  let p = document.querySelectorAll(".thor");
+  //Add innerHTML depending on index
+                          
+  p[0].textContent = 'Name: ' + item.name
+  p[1].textContent = 'Description: ' + item.description;
+  p[2].textContent = 'Debut ' + item.date_from + ' -' + ' Fin ' + item.date_to;
+  p[3].textContent = "Status: " + item.status;
+}
+
+let taskModalEl = document.getElementById('taskModal')
+taskModalEl.addEventListener('show.bs.modal', generateTasks)
+
+// -------------------------------------------------------------------------------------------------------------------
 
 // creation de sortable dans les columns
 containers = document.querySelectorAll(".container-item");
