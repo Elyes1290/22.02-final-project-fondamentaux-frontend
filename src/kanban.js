@@ -1,3 +1,5 @@
+import { Service } from "./service/Service.js"; 
+
 const ul = document.getElementById("foo");
 const usersUl = document.getElementById("users-list");
 const tachesUl = document.getElementById("taches-list");
@@ -39,48 +41,12 @@ Sortable.create(tachesUl, {
   ghostClass: "ghost",
 });
 
-async function postTasks(post) {
-  try {
-    const response = await axios.post("http://localhost:3000/tasks", post);
-    console.log(response)
-  } catch (err) {
-    console.log(err)
-  }
-}
-
-async function getusers () {
-  try {
-    const response = await axios.get("http://localhost:3000/users");
-    return await response.data;
-  } catch (err) {
-    console.log(err);
-  }
-}
-
-async function getTasks () {
-  try {
-    const response = await axios.get("http://localhost:3000/tasks");
-    return await response.data;
-  } catch (err) {
-    console.log(err);
-  }
-}
-
-async function getColumns () {
-  try {
-    const response = await axios.get("http://localhost:3000/columns");
-    return await response.data;
-  } catch (err) {
-    console.log(err);
-  }
-}
-
 /// simulation des éléments de retour de la base données
-let users = await getusers();
+let users = await Service.getUsers();
 console.log(users)
-let taches = await getTasks();
+let taches = await Service.getTasks();
 console.log(taches);
-let columns = await getColumns();
+let columns = await Service.getColumns();
 console.log(columns);
 
 // les options permettant de créee des listes
@@ -217,7 +183,7 @@ const addTache = document.getElementById("ajouter-tache");
 function randomNum(min, max) {
   let j = Math.floor(Math.random() * (max - min + 1) + min);
 }
-addTache.addEventListener("click", function () {
+addTache.addEventListener("click", async function () {
 
   //const inputTache = document.getElementById("input-tache");
   const dataTask = {
@@ -231,7 +197,7 @@ addTache.addEventListener("click", function () {
 
   newTasks.push(dataTask);
   
-  postTasks(dataTask);
+  Service.postTask(dataTask);
   createTache(dataTask);
 });
 
