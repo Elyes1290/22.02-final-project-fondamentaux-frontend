@@ -1,0 +1,65 @@
+html {
+  background-image: url(assets/images/banner-bg.svg);
+}
+
+body {
+  background-image: url(assets/images/banner-bg.svg);
+  object-fit: cover;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #eee;
+  margin: 1px;
+  padding: 5px 10px;
+}
+
+.sortable-ghost {
+  opacity: 0.6;
+}
+
+#kanban-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.add {
+  display: flex;
+  margin-right: 25px;
+  max-height: fit-content;
+}
+
+#add-bar {
+  display: flex;
+  margin-bottom: 30px;
+  margin-top: 15px;
+}
+
+#users-container {
+  border: solid 2px black;
+  width: 200px;
+  min-height: 200px;
+}
+.taches-container {
+  border: solid 2px black;
+  width: 200px;
+  min-height: 200px;
+}
+
+.row.list-group-item.container-item {
+  display: flex;
+  justify-content: space-between;
+}
+.btn.btn-primary {
+  max-width: 110px;
+}
+
+.column-containers {
+  width: 200px;
+  min-height: 400px;
+  border: solid 2px black;
+}
