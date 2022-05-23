@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', async function gettournoi() {
       title: element.name,
       start: element.date_from,
       end: element.date_to,
-      display: element.description + " " + element.status,
+      display: element.description + " \n " + element.status,
       // display: element.status
     } 
 
