@@ -38,7 +38,7 @@ Sortable.create(tachesUl, {
   ghostClass: "ghost",
 });
 
-async function getusers () {
+async function getusers() {
   try {
     const response = await axios.get("http://localhost:3000/users");
     return await response.data;
@@ -47,7 +47,7 @@ async function getusers () {
   }
 }
 
-async function getTasks () {
+async function getTasks() {
   try {
     const response = await axios.get("http://localhost:3000/tasks");
     return await response.data;
@@ -56,7 +56,7 @@ async function getTasks () {
   }
 }
 
-async function getColumns () {
+async function getColumns() {
   try {
     const response = await axios.get("http://localhost:3000/columns");
     return await response.data;
@@ -67,7 +67,7 @@ async function getColumns () {
 
 /// simulation des éléments de retour de la base données
 let users = await getusers();
-console.log(users)
+console.log(users);
 let taches = await getTasks();
 console.log(taches);
 let columns = await getColumns();
@@ -81,6 +81,7 @@ let sortableOption = {
   fallbackOnBody: true,
   ghostClass: "ghost",
   swapThreshold: 1,
+  filter: ".btn",
 };
 
 //myUsersClasses = ["row", "list-group-item"];
@@ -90,9 +91,9 @@ let sortableOption = {
 
 ///Afficher les colonnes provenant futurement les éléments de la base de données
 for (const column of columns) {
-  ul.innerHTML += `<div  class="col column-containers  list-group container-item">${column.name}
+  ul.innerHTML += `<div  class="col column-containers  list-group container-item rounded" style="background-color:#dee2e6, -webkit-box-shadow: 5px 5px 15px -1px #000000; 
+box-shadow: 5px 5px 15px -1px #000000;" >${column.name}
     <div id=${column.name} class="list-group-item"> 
-      
     </div>
     <div/>`;
   // let newDiv = document.createElement("div")
@@ -138,29 +139,31 @@ for (const tache of taches) {
   let childButton = document.createElement("button");
   childButton.value = tache.id;
   childButton.id = "modal";
-  childButton.className = "btn btn-primary";
+  childButton.className = "btn btn-primary ";
   childButton.setAttribute("type", "button");
   childButton.setAttribute("data-bs-toggle", "modal");
   childButton.setAttribute("data-bs-target", "#exampleModal");
   let newContent = document.createTextNode(tache.name);
+  let btnContent = document.createTextNode("Description");
   newDiv.appendChild(newContent);
   newDiv.appendChild(childButton);
+  childButton.appendChild(btnContent);
   tachesUl.appendChild(newDiv);
 }
 
-const Modal = document.getElementById('exampleModal')
-Modal.addEventListener('show.bs.modal', event => {
+const Modal = document.getElementById("exampleModal");
+Modal.addEventListener("show.bs.modal", (event) => {
   // Button that triggered the modal
   const button = event.relatedTarget;
   // Extract info from data-bs-* attributes
   const recipient = button.value;
-  
-  const item = taches.find(item => item.id == recipient)
 
-  const modalTitle = exampleModal.querySelector('.modal-title')
+  const item = taches.find((item) => item.id == recipient);
+
+  const modalTitle = exampleModal.querySelector(".modal-title");
 
   modalTitle.textContent = item.name;
-})
+});
 
 //ajouter une tache
 const addTache = document.getElementById("ajouter-tache");
@@ -178,8 +181,10 @@ addTache.addEventListener("click", function () {
   childButton.setAttribute("data-bs-toggle", "modal");
   childButton.setAttribute("data-bs-target", "#exampleModal");
   let newContent = document.createTextNode(inputTache.value);
+  let btnContent = document.createTextNode("Description");
   newDiv.appendChild(newContent);
   newDiv.appendChild(childButton);
+  childButton.appendChild(btnContent);
   tachesUl.appendChild(newDiv);
 });
 
@@ -195,7 +200,8 @@ ajouterUser.addEventListener("click", function () {
 const inputColumn = document.getElementById("input-column");
 const ajouterColumn = document.getElementById("ajouter-column");
 ajouterColumn.addEventListener("click", function () {
-  ul.innerHTML += `<div  class="col column-containers  list-group container-item">${inputColumn.value}
+  ul.innerHTML += `<div  class="col column-containers  list-group container-item" style="background-color:#dee2e6, -webkit-box-shadow: 5px 5px 15px -1px #000000; 
+  box-shadow: 5px 5px 15px -1px #000000;>${inputColumn.value}
   <div  class="list-group-item"> 
   
   </div>
@@ -209,10 +215,10 @@ for (var i = 0; i < containers.length; i++) {
 }
 
 // function permettant d'ajouter une div avec des classes,un contenu et de l'attacher quelque part
-function createDiv(classes, text, attachTo) {
-  const newDiv = document.createElement("div");
-  newDiv.classList.add(...classes);
-  let newContent = document.createTextNode(text);
-  newDiv.appendChild(newContent);
-  attachTo.appendChild(newDiv);
-}
+// function createDiv(classes, text, attachTo) {
+//   const newDiv = document.createElement("div");
+//   newDiv.classList.add(...classes);
+//   let newContent = document.createTextNode(text);
+//   newDiv.appendChild(newContent);
+//   attachTo.appendChild(newDiv);
+// }
