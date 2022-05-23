@@ -8,8 +8,10 @@ document.addEventListener('DOMContentLoaded', async function gettournoi() {
   let datefromcal = document.getElementById("datefrom")
   let datetocal = document.getElementById("dateto")
   let descriptionModal = document.getElementById('description')
+  let status = document.getElementById('status')
   let eventsForCalendar = [];
   
+ 
 
   //obtenir les infos depuis l'api
   let eventsList = await getEvents()
@@ -21,8 +23,9 @@ document.addEventListener('DOMContentLoaded', async function gettournoi() {
       title: element.name,
       start: element.date_from,
       end: element.date_to,
-      display: element.description
-    }
+      display: element.description + " " + element.status,
+      // display: element.status
+    } 
 
     eventsForCalendar.push(objectToPush)
   }
@@ -54,8 +57,10 @@ document.addEventListener('DOMContentLoaded', async function gettournoi() {
       $('.modal').modal('show');
       namecal.innerText = info.event.title
       descriptionModal.innerText = info.event.display
+      // status.innerText = info.event.display
       datefromcal.innerText = "Commence le : " + new Intl.DateTimeFormat('fr-FR', { dateStyle: 'full', timeStyle: 'short' }).format(dateDebut)
       datetocal.innerText = "Se termine le : " + new Intl.DateTimeFormat('fr-FR', { dateStyle: 'full', timeStyle: 'short' }).format(dateFin)
+      console.log(info.event.eventDisplay)
     },
     editable: true,
 
