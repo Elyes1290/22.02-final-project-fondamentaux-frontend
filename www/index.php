@@ -1,8 +1,8 @@
 <?php
 /*
 syntax
-    include header.php
-    include footer.php
+    include "header.php";
+    include "footer.php";
 
 */
 ?>
@@ -25,7 +25,7 @@ syntax
     </header>
     <br />
     <div class="mt-5">
-        <h1 class="mt-5">coucou</h1>
+        <?php include "functions.php"; ?>
     </div>
     <footer>
         <?php include "footer.php"; ?>
