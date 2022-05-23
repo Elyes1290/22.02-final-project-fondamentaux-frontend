@@ -13,7 +13,7 @@
                     <a class="nav-link" href="/calendar.php">Calendar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="kanban.php">Kanban</a>
+                     <a class="nav-link" href="index.php?variableName=valueOfVariables">Kanban</a> 
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="enregistrer.php">S'enregistrer</a>
