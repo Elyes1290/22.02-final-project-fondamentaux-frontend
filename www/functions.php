@@ -8,7 +8,7 @@ $page = $_GET['page'];
 
 // Create an array of the only pages allowed. 
 $pageArray = array( 
-       'home', 
+       'accueil', 
        'calendar', 
        'kanban', 
        'enregistrer',
@@ -17,7 +17,7 @@ $pageArray = array(
 // If there is no page set, include the default main page. 
 
 if (!$page) { 
-  include('home.php'); 
+  include('accueil.php'); 
 } 
 
 // Is $page in the array? 

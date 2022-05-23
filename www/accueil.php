@@ -1,6 +1,6 @@
 <?php
 
-include "data_Home/content.php";
+include "data_accueil/content.php";
 
 
 // Gestion des blocs
@@ -27,6 +27,6 @@ $blocs = [
     <?php // foreach 
     ?>
     <div class="bloc">
-        Home
+        Accueil
     </div>
 </main>
