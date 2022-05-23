@@ -122,12 +122,12 @@ function curlPost($url, $data = NULL) {
 //             'Messages' => [
 //             [
 //                 'From' => [
-//                 'Email' => "contact@diagodryson.com",
+//                 'Email' => "",
 //                 'Name' => "NoSignal"
 //                 ],
 //                 'To' => [
 //                 [
-//                     'Email' => "contact@diagodryson.com",
+//                     'Email' => "diogu.9@gmail.com",
 //                     'Name' => "NoSignal"
 //                 ]
 //                 ],
@@ -151,5 +151,37 @@ function curlPost($url, $data = NULL) {
 //     header('Location:index.php');
 //     die();
 // }
+if (isset($_POST["submit"])) {
+
+  ini_set("SMTP", "smtp.google.com");
+  ini_set("smtp_port", 465);
+  ini_set("sendemail_from", "diogu.9@gmail.com");
+  //ini_set();
+  //ini_set();
+
+
+
+
+  $to = "diogu.9@gmail.com";
+
+  $subject = 'Mail sent from sendmail PHP script';
+
+  $from = "diogu.9@gmail.com";
+
+  $message = $_POST["msg"];
+
+  $headers = "From: $from";
+
+
+  if (mail($to, $subject, $message, $headers)) {
+
+      $responseText = 'Mail sent successfully.';
+
+  } else {
+
+      $responseText = 'Unable to send mail. Please try again.';
+
+  }
+}
 
 
