@@ -34,11 +34,11 @@ li {
 }
 
 html {
-  background-image: url(assets/images/banner-bg.svg);
+  background-image: url(../assets/images/banner-bg.svg);
 }
 
 body {
-  background-image: url(assets/images/banner-bg.svg);
+  background-image: url(../assets/images/banner-bg.svg);
   object-fit: cover;
 }
 
