@@ -1,35 +1,35 @@
-ul{
+ul {
   list-style: none;
   padding: 0;
 }
-  
+
 li {
   background: #eee;
   margin: 1px;
   padding: 5px 10px;
-};
+}
 
 .minH {
   min-height: 5rem;
-};
+}
 
 .sortable-ghost {
-  opacity: .6;
+  opacity: 0.6;
 }
 
-#users-container{
+#users-container {
   border: solid 2px black;
   width: 200px;
   min-height: 200px;
 }
-.taches-container{
+.taches-container {
   border: solid 2px black;
   width: 200px;
   min-height: 200px;
 }
-.column-containers{
+.column-containers {
   width: 200px;
-  min-height:400px;
+  min-height: 400px;
   border: solid 2px black;
 }
 
@@ -61,7 +61,7 @@ body {
 
 .row.list-group-item.container-item {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 .btn.btn-primary {
   max-width: 110px;

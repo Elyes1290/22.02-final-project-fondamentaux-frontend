@@ -1,4 +1,4 @@
-import { Service } from "./service/Service.js"; 
+import { Service } from "./service/Service.js";
 
 const ul = document.getElementById("foo");
 const usersUl = document.getElementById("users-list");
@@ -24,22 +24,22 @@ Sortable.create(foo, {
   ghostClass: "ghost",
   swapThreshold: 1,
 });
-Sortable.create(foo, {
-  group: "foo",
-  animation: 100,
-  fallbackOnBody: true,
-  ghostClass: "ghost",
-  swapThreshold: 1,
-});
-Sortable.create(foo, {
-  group: "foo",
-  animation: 100,
-  fallbackOnBody: true,
-  ghostClass: "ghost",
-  swapThreshold: 1,
-});
+// Sortable.create(foo, {
+//   group: "foo",
+//   animation: 100,
+//   fallbackOnBody: true,
+//   ghostClass: "ghost",
+//   swapThreshold: 1,
+// });
+// Sortable.create(foo, {
+//   group: "foo",
+//   animation: 100,
+//   fallbackOnBody: true,
+//   ghostClass: "ghost",
+//   swapThreshold: 1,
+// });
 Sortable.create(usersUl, {
-  group: { name: "foo", pull: "clone", put: false},
+  group: { name: "foo", pull: "clone", put: false },
   animation: 100,
   fallbackOnBody: true,
   swapThreshold: 1,
@@ -53,19 +53,19 @@ Sortable.create(tachesUl, {
 });
 
 const drag = document.querySelectorAll(".drag");
-for(let item of drag) {
+for (let item of drag) {
   Sortable.create(item, {
-      group: "foo",
-      animation: 150,
-      fallbackOnBody: true,
-      ghostClass: "ghost",
-      swapThreshold: 1,
-  }); 
+    group: "foo",
+    animation: 150,
+    fallbackOnBody: true,
+    ghostClass: "ghost",
+    swapThreshold: 1,
+  });
 }
 
 /// simulation des éléments de retour de la base données
 let users = await Service.getUsers();
-console.log(users)
+console.log(users);
 let taches = await Service.getTasks();
 console.log(taches);
 let columns = await Service.getColumns();
@@ -79,12 +79,12 @@ let sortableOption = {
   fallbackOnBody: true,
   ghostClass: "ghost",
   swapThreshold: 1,
+  filter: ".btn",
 };
 
 function createColumns(column) {
-
   let div1 = document.createElement("div");
-  div1.className = "card col bg-opacity-25 bg-" + column.color;
+  div1.className = "card col bg-opacity-25 shadow-lg  bg-" + column.color;
 
   let div2 = document.createElement("div");
   div2.className = "text-center fw-bold card-header mb-2";
@@ -94,7 +94,7 @@ function createColumns(column) {
   div3.className = "card-text text-center drag minH";
 
   div1.appendChild(div2);
-  div1.appendChild(div3)
+  div1.appendChild(div3);
   ul.appendChild(div1);
 
   return ul;
@@ -120,7 +120,7 @@ function createUsers(user) {
 
 ///Afficher les utilisateurs provenant futurement les éléments de la base de données
 for (const user of users) {
-  createUsers(user)
+  createUsers(user);
 }
 
 ajouterUser.addEventListener("click", function () {
@@ -142,7 +142,10 @@ function createTache(tache) {
   childButton.setAttribute("data-bs-target", "#exampleModal");
 
   let newContent = document.createElement("div");
+  let btnContent = document.createElement("Discription");
+
   newContent.textContent = tache.name;
+  childButton.appendChild(btnContent);
   newDiv.appendChild(newContent);
   newDiv.appendChild(childButton);
   tachesUl.appendChild(newDiv);
@@ -159,7 +162,6 @@ function randomNum(min, max) {
   let j = Math.floor(Math.random() * (max - min + 1) + min);
 }
 addTache.addEventListener("click", async function () {
-
   //const inputTache = document.getElementById("input-tache");
   const dataTask = {
     id: randomNum(0, 999),
@@ -167,41 +169,39 @@ addTache.addEventListener("click", async function () {
     description: "djskdéfjskfjsdkéfsddsdsdsdsdsd",
     date_from: "17:00",
     date_to: "18:00",
-    status: "open"
-  }
+    status: "open",
+  };
 
   newTasks.push(dataTask);
-  
+
   await Service.postTask(dataTask);
   createTache(dataTask);
 
   document.getElementById("input-tache").value = "";
 });
 
-const Modal = document.getElementById('exampleModal')
-Modal.addEventListener('show.bs.modal', event => {
-
-
+const Modal = document.getElementById("exampleModal");
+Modal.addEventListener("show.bs.modal", (event) => {
   if (document.querySelector("#buttonSave")) {
     document.querySelector("#buttonSave").remove();
   }
-  
+
   const button = event.relatedTarget;
 
   const recipient = button.value;
   let item;
 
-  if (taches.find(item => item.id == recipient) !== undefined ) {
-    item = taches.find(item => item.id == recipient)
+  if (taches.find((item) => item.id == recipient) !== undefined) {
+    item = taches.find((item) => item.id == recipient);
   } else {
-    item = newTasks.find(item => item.id == recipient)
+    item = newTasks.find((item) => item.id == recipient);
   }
-  
-  const modalTitle = exampleModal.querySelector('.modal-title')
+
+  const modalTitle = exampleModal.querySelector(".modal-title");
 
   modalTitle.textContent = item.name;
 
-  const footerModal = Modal.querySelector('.modal-footer');
+  const footerModal = Modal.querySelector(".modal-footer");
 
   const buttonSave = document.createElement("button");
   buttonSave.setAttribute("type", "button");
@@ -210,7 +210,7 @@ Modal.addEventListener('show.bs.modal', event => {
   buttonSave.className = "btn btn-success";
   buttonSave.setAttribute("data-bs-dismiss", "modal");
   buttonSave.textContent = "Save";
-  
+
   buttonSave.addEventListener("click", (event) => {
     event.preventDefault();
     saveChanges(event.target.value);
@@ -218,11 +218,10 @@ Modal.addEventListener('show.bs.modal', event => {
 
   footerModal.appendChild(buttonSave);
 
-  generateTasks(item)
-})
+  generateTasks(item);
+});
 
 async function saveChanges(value) {
-
   const update = {
     name: p[0].value,
     description: p[1].value,
@@ -237,9 +236,8 @@ async function saveChanges(value) {
 // Donnés dans modal Sam -------------------------------------------------------------------------------------------------
 
 function generateTasks(item) {
-
   //Add innerHTML depending on index
-                          
+
   p[0].setAttribute("placeholder", item.name);
   p[1].setAttribute("placeholder", item.description);
   p[2].setAttribute("placeholder", item.date_from);
@@ -247,8 +245,8 @@ function generateTasks(item) {
   p[4].setAttribute("placeholder", item.status);
 }
 
-let taskModalEl = document.getElementById('taskModal')
-taskModalEl.addEventListener('show.bs.modal', generateTasks)
+let taskModalEl = document.getElementById("taskModal");
+taskModalEl.addEventListener("show.bs.modal", generateTasks);
 
 // -------------------------------------------------------------------------------------------------------------------
 
