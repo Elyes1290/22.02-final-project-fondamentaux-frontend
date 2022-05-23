@@ -24,9 +24,9 @@ syntax
         <?php include "header.php"; ?>
     </header>
     <br />
-    <div class="mt-5">
+    <main class="mt-5">
         <?php include "functions.php"; ?>
-    </div>
+    </main>
     <footer>
         <?php include "footer.php"; ?>
     </footer>

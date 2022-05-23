@@ -22,7 +22,9 @@ $blocs = [
 
 ?>
 <main>
-<?php // foreach ?>
-  <div class="bloc">
-
+    <?php // foreach 
+    ?>
+    <div class="bloc">
+        Home
+    </div>
 </main>
