@@ -1,0 +1,3 @@
+<div>
+    En attente du calendrier...
+</div>
