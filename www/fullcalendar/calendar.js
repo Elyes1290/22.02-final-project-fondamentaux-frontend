@@ -71,8 +71,8 @@ document.addEventListener('DOMContentLoaded', async function getTasksList() {
   calendar.render();
 
 });
-
-
+//https://backend.yonathan.ch/api/tasks/list
+//http://localhost:8181/api/tasks/list
 // Get Axios et attente de promesse
 async function getEvents() {
   try {
