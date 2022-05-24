@@ -4,7 +4,7 @@
  */
 
 // Place the value from ?page=value in the URL to the variable $page. 
-$page = $_GET['page']; 
+$page = isset($_GET['page']) ? $_GET['page'] : 'accueil'; 
 
 // Create an array of the only pages allowed. 
 $pageArray = array( 
@@ -13,12 +13,7 @@ $pageArray = array(
        'kanban', 
        'enregistrer',
          ); 
-
-// If there is no page set, include the default main page. 
-
-if (!$page) { 
-  include('accueil.php'); 
-} 
+ 
 
 // Is $page in the array? 
 $inArray = in_array($page, $pageArray); 
