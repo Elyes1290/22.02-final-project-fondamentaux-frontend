@@ -1,7 +1,8 @@
 
-document.addEventListener('DOMContentLoaded', async function gettournoi() {
+document.addEventListener('DOMContentLoaded', async     function gettournoi() {
 
-
+    let initialLocaleCode = 'en';
+    let localeSelectorEl = document.getElementById('locale-selector');
     let calendarEl = document.getElementById('calendar');
 
     let namecal = document.getElementById("name")
@@ -20,29 +21,30 @@ document.addEventListener('DOMContentLoaded', async function gettournoi() {
             allDay: false,
             start: element.date_from, 
             end: element.date_to,
-            display: element.description
+            display: element.description +"\n"+ element.status,
         }
         // namecal.innerHTML = objectToPush.name;
         eventsForCalendar.push(objectToPush)
-        console.log(eventsForCalendar)
 
     }
-    console.log(calendarEl);
     var calendar = new FullCalendar.Calendar(calendarEl, {
-        locale: 'fr',
+        locale: initialLocaleCode,
+        buttonIcons: true, // show the prev/next text
+        weekNumbers: false,
+        navLinks: true, // can click day/week names to navigate views
+        editable: true,
+        dayMaxEvents: true, // allow "more" link when too many events
+        events: 'https://fullcalendar.io/api/demo-feeds/events.json?overload-day',
         headerToolbar:  {
-            left: "dayGridMonth, dayGridWeek, timeGrid, list", // will normally be on the left. if RTL, will be on the right
+            left: "dayGridMonth, dayGridWeek, timeGrid, list,", // will normally be on the left. if RTL, will be on the right
             center: 'title',
             right: 'today prev,next', // will normally be on the right. if RTL, will be on the left
         },
-          
-
         events: eventsForCalendar,
         dateClick: function(arg) {
           console.log(arg.date.toString()); // use local methods on the native Date Object
           // will output something like 'Sat Sep 01 2018 00:00:00 GMT-XX:XX (Eastern Daylight Time)'
         },
-
         eventClick: function(info) {
             // Display the modal and set the values to the event values.
             console.log("Event", info.event.id)
@@ -58,8 +60,22 @@ document.addEventListener('DOMContentLoaded', async function gettournoi() {
             editable: true,
             eventLimit: true // allow "more" link when too many events
     });
-    calendar.render();
-});  
+    calendar.render();  
+
+    calendar.getAvailableLocaleCodes().forEach(function(localeCode) {
+        var optionEl = document.createElement('option');
+        optionEl.value = localeCode;
+        optionEl.selected = localeCode == initialLocaleCode;
+        optionEl.innerText = localeCode;
+        localeSelectorEl.appendChild(optionEl);
+    });  
+    localeSelectorEl.addEventListener('change', function() {
+        if (this.value) {
+          calendar.setOption('locale', this.value);
+        }
+    
+    });
+});
   
   // Get Evenment
   async function getEvents() {
