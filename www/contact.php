@@ -25,7 +25,7 @@ if(!empty($_POST['surname']) && !empty($_POST['firstname']) && !empty($_POST['me
                   [
                     'Email' => "contact@diagodryson.com",
                     'Name' => "Diago"
-                  ]
+                  ] 
                 ],
                 'Subject' => "Greetings from Mailjet.",
                 'TextPart' => "My first Mailjet email",
