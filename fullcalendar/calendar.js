@@ -3,10 +3,12 @@ document.addEventListener('DOMContentLoaded', async function gettournoi() {
 
     let calendarEl = document.getElementById('calendar');
     let namecal = document.getElementById("name")
-    let descirptioncal = document.getElementById("description")
+    let descriptioncal = document.getElementById("description")
     let datefromcal = document.getElementById("datefrom")
     let datetocal=document.getElementById("dateto")
+    let statuscal=document.getElementById('status')
     let eventsForCalendar = [];
+    
   
     //obtenir les ino depuis l'api
     let eventsList = await getEvents()
@@ -19,24 +21,26 @@ document.addEventListener('DOMContentLoaded', async function gettournoi() {
             title: element.name,
             allDay: false,
             start: element.date_from, 
-            end: element.date_to
+            end: element.date_to,
+            display: element.description +"\n"+ element.status
         }
         // namecal.innerHTML = objectToPush.name;
         eventsForCalendar.push(objectToPush)
-        console.log(eventsForCalendar)
+        
 
     }
     console.log(calendarEl);
     var calendar = new FullCalendar.Calendar(calendarEl, {
-        locale: 'fr',
+        locale: 'fr-ch',
         headerToolbar:  {
   
             left: "dayGridMonth, dayGridWeek, timeGrid, list", // will normally be on the left. if RTL, will be on the right
             center: 'title',
-            right: 'today prev,next', // will normally be on the right. if RTL, will be on the left
-  
+            right: 'today prev,next prevYear nextYear', // will normally be on the right. if RTL, will be on the left
+
           },
-        events: eventsForCalendar,
+        
+          events: eventsForCalendar,
         dateClick: function(arg) {
           console.log(arg.date.toString()); // use local methods on the native Date Object
           // will output something like 'Sat Sep 01 2018 00:00:00 GMT-XX:XX (Eastern Daylight Time)'
@@ -45,11 +49,19 @@ document.addEventListener('DOMContentLoaded', async function gettournoi() {
                 // Display the modal and set the values to the event values.
                 console.log("Event", info.event.id)
                 const eventFound = eventsList.find((e) => e.id === info.event.id)
+                const eventDatefrom = eventsList.find((e)=> e.start === info.event.date_from)
+                const eventDateto = eventsList.find((e)=> e.end === info.event.date_to)
+                const eventDes = eventsList.find((e)=> e.display === info.event.description)
+            
                 // eventFoundconsole.log("Element", eventFound)
 
                 $('.modal').modal('show');
                 namecal.innerText = info.event.title
-                descirptioncal.innerText = info.event.
+                datefromcal.innerText = info.event.start
+                datetocal.innerText = info.event.end
+                descriptioncal.innerText = info.event.display 
+                
+            
 
         },
             editable: true,
@@ -57,9 +69,17 @@ document.addEventListener('DOMContentLoaded', async function gettournoi() {
 
         });
 
+        
+        
+
     
       calendar.render();
     });
+
+    
+    
+  
+    
   
   
   
