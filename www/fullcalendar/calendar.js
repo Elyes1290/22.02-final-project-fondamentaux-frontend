@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', async function getTasksList() {
     eventClick: function (info) {
       const dateDebut = new Date(info.event.start);
       const dateFin = new Date(info.event.end);
+      const eventFound = eventsList.find((e) => e.id === info.event.id)
 
       // Display the modal and set the values to the event values.
       $('.modal').modal('show');
