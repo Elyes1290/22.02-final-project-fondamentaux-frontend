@@ -49,10 +49,7 @@ document.addEventListener('DOMContentLoaded', async function gettournoi() {
                 // Display the modal and set the values to the event values.
                 console.log("Event", info.event.id)
                 const eventFound = eventsList.find((e) => e.id === info.event.id)
-                const eventDatefrom = eventsList.find((e)=> e.start === info.event.date_from)
-                const eventDateto = eventsList.find((e)=> e.end === info.event.date_to)
-                const eventDes = eventsList.find((e)=> e.display === info.event.description)
-            
+              
                 // eventFoundconsole.log("Element", eventFound)
 
                 $('.modal').modal('show');
