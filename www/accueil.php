@@ -81,9 +81,9 @@
                         <i class="lni-baloon"></i>
                     </div>
                     <div class="services-content mt-30">
-                        <h4 class="services-title"><a href="#">Accueil</a></h4>
+                        <h4 class="services-title"><a href="index.php?page=accueil">Accueil</a></h4>
                         <p class="text">Une manière plus intelligente de travailler</p>
-                        <a class="more" href="#">En savoir plus <i class="lni-chevron-right"></i></a>
+                        <a class="more" href="index.php?page=accueil">En savoir plus <i class="lni-chevron-right"></i></a>
                     </div>
                 </div> <!-- single services -->
             </div>
@@ -95,9 +95,9 @@
                         <i class="lni-cog"></i>
                     </div>
                     <div class="services-content mt-30">
-                        <h4 class="services-title"><a href="#">Calendar</a></h4>
+                        <h4 class="services-title"><a href="index.php?page=calendar">Calendar</a></h4>
                         <p class="text">Un calendrier sur mesure et à la hauteur de vos ambitions, qui vous suit partout</p>
-                        <a class="more" href="#">En savoir plus <i class="lni-chevron-right"></i></a>
+                        <a class="more nav-link" href="index.php?page=calendar">En savoir plus <i class="lni-chevron-right"></i></a>
                     </div>
                 </div> <!-- single services -->
             </div>
@@ -109,9 +109,9 @@
                         <i class="lni-bolt-alt"></i>
                     </div>
                     <div class="services-content mt-30">
-                        <h4 class="services-title"><a href="#">Kanban</a></h4>
+                        <h4 class="services-title"><a href="index.php?page=kanban">Kanban</a></h4>
                         <p class="text">Organiser et plannifiez vos projets, ici et maintenant</p>
-                        <a class="more" href="#">En savoir plus <i class="lni-chevron-right"></i></a>
+                        <a class="more nav-link"  href="index.php?page=kanban">En savoir plus <i class="lni-chevron-right"></i></a>
                     </div>
                 </div> <!-- single services -->
             </div>
@@ -123,10 +123,10 @@
                         <i class="lni-baloon"></i>
                     </div>
                     <div class="services-content mt-30">
-                        <h4 class="services-title"><a href="#">Inscription</a></h4>
+                        <h4 class="services-title"><a href="index.php?page=enregistrer">Inscription</a></h4>
                         <p class="text">Pas encore inscrit? 
                                     <br>N'attendez plus, inscrivez-vous pour bénéficiez de tous les avantages et plus encore</p>
-                        <a class="more" href="#">En savoir plus <i class="lni-chevron-right"></i></a>
+                        <a class="more nav-link" href="index.php?page=enregistrer">En savoir plus <i class="lni-chevron-right"></i></a>
                     </div>
                 </div> <!-- single services -->
             </div>
