@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', async function getTasksList() {
     // Jours du calendrier en francais.
     locale: 'fr',
     buttonIcons: true,
-    dayMaxEvents: true, // Crée un lien ouvrant la liste des évéenements à partir d'un certain nombre.  
+    dayMaxEvents: true, // Crée un lien ouvrant la liste des événements à partir d'un certain nombre.  
 
     // Traduction des bouttons.
     buttonText: {
