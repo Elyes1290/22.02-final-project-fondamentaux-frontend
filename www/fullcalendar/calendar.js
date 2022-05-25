@@ -14,7 +14,11 @@ document.addEventListener('DOMContentLoaded', async function getTasksList() {
   // Obtenir les infos depuis l'api.
   let eventsList = await getEvents()
 
+<<<<<<< Updated upstream
   // Tableau des éléments qui vont être dans la modale. 
+=======
+  // Tableau des éléments json qui vont être dans la modale 
+>>>>>>> Stashed changes
   for (const element of eventsList) {
     let objectToPush = {
       id: element.id,
