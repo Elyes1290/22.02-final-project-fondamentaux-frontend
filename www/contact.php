@@ -151,37 +151,81 @@ function curlPost($url, $data = NULL) {
 //     header('Location:index.php');
 //     die();
 // }
-if (isset($_POST["submit"])) {
-
-  ini_set("SMTP", "smtp.google.com");
-  ini_set("smtp_port", 465);
-  ini_set("sendemail_from", "diogu.9@gmail.com");
-  //ini_set();
-  //ini_set();
 
 
+// if (isset($_POST["submit"])) {
+
+//   ini_set("SMTP", "smtp.gmail.com");
+//   ini_set("smtp_port", 465);
+//   ini_set("sendemail_from", "diogu.9@gmail.com");
+//   //ini_set();
+//   //ini_set();
 
 
-  $to = "diogu.9@gmail.com";
-
-  $subject = 'Mail sent from sendmail PHP script';
-
-  $from = "diogu.9@gmail.com";
-
-  $message = $_POST["msg"];
-
-  $headers = "From: $from";
 
 
-  if (mail($to, $subject, $message, $headers)) {
+//   $to = "diogu.9@gmail.com";
 
-      $responseText = 'Mail sent successfully.';
+//   $subject = 'Mail sent from sendmail PHP script';
 
-  } else {
+//   $from = "diogu.9@gmail.com";
 
-      $responseText = 'Unable to send mail. Please try again.';
+//   $message = $_POST["msg"];
 
-  }
-}
+//   $headers = "From: $from";
 
 
+//   if (mail($to, $subject, $message, $headers)) {
+
+//       $responseText = 'Mail sent successfully.';
+
+//   } else {
+
+//       $responseText = 'Unable to send mail. Please try again.';
+
+//   }
+// }
+
+// if (isset( $_POST['submit'])){
+
+// use PHPMailer\PHPMailer\PHPMailer;
+// use PHPMailer\PHPMailer\Exception;
+
+// require 'www/phpmailer/Exception.php';
+// require 'www/phpmailer/PHPMailer.php';
+// require 'www/phpmailer/SMTP.php';
+
+// $mail = new PHPMailer(true);
+
+// try {
+//     //Server settings
+//     $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+//     $mail->isSMTP();                                            //Send using SMTP
+//     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+//     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+//     $mail->username   = 'email';                     //SMTP username
+//     $mail->Password   = 'secret';                               //SMTP password
+//     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+//     $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+//     //Recipients
+//     $mail->setFrom('diogu.9@gmail.com', 'Mailer');
+//     $mail->addAddress('diogu.9@gmail.com');     //Add a recipient
+                  
+//     $mail->addReplyTo('info@example.com');
+//     $mail->addCC('cc@example.com');
+//     $mail->addBCC('bcc@example.com');
+
+    
+
+//     //Content
+//     $mail->isHTML(true);                                  //Set email format to HTML
+//     $mail->Subject = 'Here is the subject';
+//     $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+//     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+//     $mail->send();
+//     echo 'Message has been sent';
+// } catch (Exception $e) {
+//     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+// }
