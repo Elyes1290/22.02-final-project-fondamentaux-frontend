@@ -1,6 +1,3 @@
-<?php
-     include "functions.php";
-?>
 <nav class="navbar fixed-top navbar-expand-lg bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.php?page=accueil">LOGO</a>
