@@ -1,12 +1,3 @@
-<?php
-/*
-syntax
-    include "header.php";
-    include "footer.php";
-
-*/
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
