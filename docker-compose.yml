@@ -47,7 +47,6 @@ services:
     # Expose HTTP/S ports
     ports:
       - "8181:80"
-
     working_dir: /var/www/html # chemin virtuel pointant vers le container déployé
     volumes: 
       # Served files
