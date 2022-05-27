@@ -7,8 +7,10 @@
     <!-- ====== Title ====== -->
     <title>Kanban Réalise</title>
 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="./index.css" rel='stylesheet' />
     <link href='https://cdn.jsdelivr.net/combine/npm/fullcalendar-scheduler@5.11.0/main.min.css,npm/fullcalendar-scheduler@5.11.0/main.min.css' rel='stylesheet' />
@@ -17,7 +19,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
     <!-- ====== FullCalendar ====== -->
     <link href='fullcalendar-5.11.0/lib/main.css' rel='stylesheet' />
@@ -159,4 +162,3 @@
 </body>
 
 </html>
-
