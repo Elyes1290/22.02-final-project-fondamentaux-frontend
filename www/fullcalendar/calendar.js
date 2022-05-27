@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', async function getTasksList() {
 // Requête Axios.
 async function getEvents() {
   try {
-    let response = await axios.get("https://backend.yonathan.ch/api/tasks/list")
+    let response = await axios.get("http://localhost:8181/api/tasks/list")
     if (response.status !== 200) throw new Error('failed')
     return response.data
   } catch (e) {
