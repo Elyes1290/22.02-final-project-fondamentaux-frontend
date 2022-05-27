@@ -10,21 +10,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="./index.css" rel='stylesheet' />
-    <link href='https://cdn.jsdelivr.net/combine/npm/fullcalendar-scheduler@5.11.0/main.min.css,npm/fullcalendar-scheduler@5.11.0/main.min.css' rel='stylesheet' />
-    <script src='https://cdn.jsdelivr.net/combine/npm/fullcalendar-scheduler@5.11.0,npm/fullcalendar-scheduler@5.11.0/locales-all.min.js,npm/fullcalendar-scheduler@5.11.0/locales-all.min.js,npm/fullcalendar-scheduler@5.11.0/main.min.js,npm/fullcalendar@5.11.0'></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <!-- Custom css -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/kanban.css">
+
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
-    <!-- ====== FullCalendar ====== -->
-    <link href='fullcalendar-5.11.0/lib/main.css' rel='stylesheet' />
+    <!-- Boostrap 5.1.3 -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
+    <!-- ====== FullCalendar ====== -->
+    <link href='https://cdn.jsdelivr.net/combine/npm/fullcalendar-scheduler@5.11.0/main.min.css,npm/fullcalendar-scheduler@5.11.0/main.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/combine/npm/fullcalendar-scheduler@5.11.0,npm/fullcalendar-scheduler@5.11.0/locales-all.min.js,npm/fullcalendar-scheduler@5.11.0/locales-all.min.js,npm/fullcalendar-scheduler@5.11.0/main.min.js,npm/fullcalendar@5.11.0'></script>
+
+    <!-- Sortable JS-->
+    <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
 
     <!--====== Favicon Icon ======-->
     <link rel="shortcut icon" href="assets/images/Five-K-Icon-Abstract-Letter-on-transparent.png" type="image/png">
@@ -142,22 +148,14 @@
     <!--====== Main js ======-->
     <script src="assets/js/main.js"></script>
 
-    <script src="fullcalendar-5.11.0/lib/main.js"></script>
+    <!-- FullCalendar -->
+    <script src="./fullcalendar/calendar.js" type="module"></script>
 
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-
-
-
-
-    <!--====== Axios ======-->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js%22%3E"></script>
-
-
-
-   <!-- ====== CalendarJS ====== -->
-
-<script src="index.js" type="module"></script>
-
+    <!-- Kanban -->
+    <script src="./kanban/kanban.js" type="module"></script>
 
 </body>
 
